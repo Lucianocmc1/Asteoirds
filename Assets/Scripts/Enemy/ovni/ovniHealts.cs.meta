@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0b78cc66c88a8cb428e988f0f6a8704a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - particleDestroy: {instanceID: 0}
+  - sfxDestroy: {fileID: 8300000, guid: 16747251e42cd9a488a72c8ef3b7d377, type: 3}
+  - dataEnemy: {fileID: 11400000, guid: de4c503636340a54bac6c00f369e24ce, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

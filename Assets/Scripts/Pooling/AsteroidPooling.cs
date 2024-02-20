@@ -1,0 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AsteroidPooling : MonoBehaviour
+{
+    [SerializeField] private GameObject[] prefab;
+    [SerializeField] private List<GameObject> asteroidsList;
+    [SerializeField] private int poolSize = 10;
+
+    private static AsteroidPooling instance;
+    public static AsteroidPooling Instance { get { return instance; } }   // lo podremos llammar desde otros scripts
+
+    private void Awake() //por si es llamdado mas de una ves no me va a duplicar la lista de pooling me elimina una
+    {
+        if (instance == null)
+         instance = this;
+        else
+         Destroy(gameObject);
+    }
+
+    void Start()=>  AddAsteroidToPool(poolSize);
+
+    private void AddAsteroidToPool(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            int randomN = Random.Range(0, 3);
+            var asteroids = prefab[randomN]; 
+            asteroids.gameObject.SetActive(false);
+            asteroidsList.Add(asteroids);
+            //asteroids.transform.parent = transform;  
+        }
+    }
+
+    public GameObject RequestAsteroid()
+    {
+        for (int i = 0; i < asteroidsList.Count; i++)
+        {
+            if (!asteroidsList[i].gameObject.activeSelf)
+            {
+                asteroidsList[i].gameObject.SetActive(true);
+                return asteroidsList[i];
+            }
+         }
+
+        AddAsteroidToPool(1);
+        asteroidsList[asteroidsList.Count - 1].gameObject.SetActive(true); 
+        return asteroidsList[asteroidsList.Count - 1]; 
+    }
+  
+}

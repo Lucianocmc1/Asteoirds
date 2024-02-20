@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 2c78f7094a5c3fd44bc116189aa0af2e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ovniPrefab: {fileID: 7244956202918404253, guid: c5fde351a6844a1488b9cc2abf69b7e9, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5615970015864638860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5615970015864638861}
+  - component: {fileID: 5615970015864638862}
+  - component: {fileID: 5615970015864638863}
+  - component: {fileID: 5615970015864638856}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5615970015864638861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615970015864638860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.18, y: 7.18, z: -0.08738174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5615970015864638862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615970015864638860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ff144d9f87fda47971d9567ab799ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPMax: 3
+  HPCurrent: 0
+  player: {fileID: 8747522840583915701, guid: 150b3de367a9d584e8863640345cb67a, type: 3}
+  amountEnemyInitial: 2
+  respawnEnemy: {fileID: 2552862386497223830, guid: ed12613c50f59994c94e38e77b59be1d, type: 3}
+  maxEnergy: 10000
+  minEnergy: 10000
+  removeAmountEnergy: 10
+  moreEnergy: 10
+  bomTimeMax: 1500
+  bomTimeMin: 0
+--- !u!114 &5615970015864638863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615970015864638860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b46acd8141a0a49b1e8ab2d94579a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5615970015864638856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615970015864638860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb1da1144b9dca4a8e867e85ad05a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  speed: 4
+  prefabAsteroid:
+  - {fileID: 8834802829497987584, guid: 14a2d65908181ea4688340e88852ca8e, type: 3}
+  - {fileID: 4897642804854926383, guid: 5524fe06808be6d459c73d07ebb4b7ef, type: 3}
+  - {fileID: 4707467451133852246, guid: af2402dc6a1ec724d858839a2dbc2fd8, type: 3}
+  particleDestroy: {fileID: 4670957418794419436, guid: dafb8cbe856344344a4be910ee1ab24a, type: 3}
+  sfxDestroy: {fileID: 8300000, guid: 16747251e42cd9a488a72c8ef3b7d377, type: 3}
