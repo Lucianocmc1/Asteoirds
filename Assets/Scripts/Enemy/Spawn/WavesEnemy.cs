@@ -19,7 +19,7 @@ public class WavesEnemy : MonoBehaviour
     void Awake()
     {
         Singlenton = this;
-        RespawnEnemy.Singlenton.OnSpawnedEnemy += OnEnemySpawned;
+       // RespawnEnemy.Singlenton.OnSpawnedEnemy += OnEnemySpawned;
        
     }
 

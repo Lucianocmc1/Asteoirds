@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - ovniPrefab: {fileID: 7244956202918404253, guid: c5fde351a6844a1488b9cc2abf69b7e9, type: 3}
+  - ovniPrefab: {fileID: 7244956202918404321, guid: c5fde351a6844a1488b9cc2abf69b7e9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

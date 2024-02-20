@@ -212,10 +212,10 @@ GameObject:
   - component: {fileID: 5411897672329788415}
   - component: {fileID: 5411897671214923684}
   - component: {fileID: 5411897671214923686}
+  - component: {fileID: 5411897671214923681}
   - component: {fileID: 5411897671214923685}
   - component: {fileID: 5411897671214923687}
   - component: {fileID: 5411897671214923680}
-  - component: {fileID: 5411897671214923681}
   - component: {fileID: 5411897671214923682}
   - component: {fileID: 4211224638682023351}
   m_Layer: 6
@@ -440,6 +440,28 @@ MonoBehaviour:
   player: {fileID: 11400000, guid: 32cd5c52f1c1a274096d5914d3c12de4, type: 2}
   barEnergy: {fileID: 5411897671214923687}
   minEnergyBurst: 10
+--- !u!114 &5411897671214923681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411897672329788387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cf8e13a4843634d8c3a91a0b019692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionTemplate: {fileID: 0}
+  templeateHealt: {fileID: 9080256395363689371, guid: 816a93e900b977241b555d80c5fcea9e, type: 3}
+  healtInitial: 3
+  offSet: 50
+  layerEnemy:
+    serializedVersion: 2
+    m_Bits: 128
+  layerBulletEnemy:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &5411897671214923685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,7 +491,7 @@ MonoBehaviour:
   maxEnergy: 100
   currentEnergy: 100
   lowEnergy: 1
-  moreEnergy: 0.1
+  moreEnergy: 0.098
 --- !u!114 &5411897671214923680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,28 +509,6 @@ MonoBehaviour:
   outBullet: {fileID: 2621333970106111221}
   cadenceShoot: 0.2
   weapon: {fileID: 11400000, guid: ed9496fad28c3d646ad78efe35d3508c, type: 2}
---- !u!114 &5411897671214923681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5411897672329788387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94cf8e13a4843634d8c3a91a0b019692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionTemplate: {fileID: 0}
-  templeateHealt: {fileID: 0}
-  healtInitial: 3
-  offSet: 50
-  layerEnemy:
-    serializedVersion: 2
-    m_Bits: 128
-  layerBulletEnemy:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &5411897671214923682
 MonoBehaviour:
   m_ObjectHideFlags: 0
