@@ -28,7 +28,7 @@ public class MoveShip : MonoBehaviour
     void Burst()  
     {
        burst = input.OnBurst() > 0f;
-       spriteFire.SetActive(burst && SufficientPower() && (input.GetAxisY() > 0f)); 
+       spriteFire.active = (burst && SufficientPower() && (input.GetAxisY() > 0f)); 
     }
 
     void Move() 

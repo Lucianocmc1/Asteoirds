@@ -8,8 +8,8 @@ using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Enemy {
-    public class ovniHealts : EnemyHealt, IDestroy //, IEnemyWaves
-{
+    public class ovniHealts : EnemyHealt, IDestroy , IEnemyInfo
+    {
     [SerializeField] private GameObject particleDestroy;
     [SerializeField] private AudioClip sfxDestroy;
     [SerializeField] EnemySO newDataEnemy;
@@ -34,5 +34,6 @@ namespace Enemy {
     {
         OnDestroyEnemy?.Invoke(this, enty); // le avisa al wavesEnemy? 
     }
+     public TypeEnemy GetTypeEnemy() => newDataEnemy.typeEnemy;
   }
 }

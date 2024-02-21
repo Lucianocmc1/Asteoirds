@@ -14,13 +14,14 @@ GameObject:
   - component: {fileID: 7583422299349028525}
   - component: {fileID: 1142945415330749465}
   - component: {fileID: 6252475281895420455}
+  - component: {fileID: -8517686504413766977}
   m_Layer: 7
   m_Name: Asteroid_Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4707467451133852245
 Transform:
   m_ObjectHideFlags: 0
@@ -259,6 +260,19 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 88c771b7b6c2ae84d92f87aff57cc4c7, type: 2}
   rotateMin: 30
   rotateMax: 60
+--- !u!114 &-8517686504413766977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4707467451133852246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee55a7acceab024ca79abce1be6cf66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataEnemy: {fileID: 11400000, guid: 88c771b7b6c2ae84d92f87aff57cc4c7, type: 2}
 --- !u!1 &4707467452472141158
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class createEnemyDictionary
        Dictionary<TypeEnemy, int> newDict = new Dictionary<TypeEnemy, int>();
        foreach (var enemy in dictionaryEnemies)
        {
-            newDict.Add( enemy.typeEnemy, enemy.score);
+                newDict.Add( enemy.typeEnemy, enemy.score);
        }
 
         return newDict;

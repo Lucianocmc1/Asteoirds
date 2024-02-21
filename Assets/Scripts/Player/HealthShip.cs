@@ -11,9 +11,11 @@ public class HealthShip : MonoBehaviour, IDestroy
     [SerializeField] LayerMask layerEnemy;
     [SerializeField] LayerMask layerBulletEnemy;
     int index = 0;
+    Rigidbody2D body;
 
     void Start()
     {
+       body = GetComponent<Rigidbody2D>();
        for (int i = healtInitial; i >= 1; i--)
         InstanceHealt();
     }
@@ -44,11 +46,15 @@ public class HealthShip : MonoBehaviour, IDestroy
         }
         Debug.Log("Lost Over");
     }
-    void Respawn()=>  transform.position = Vector3.zero;
+    void Respawn() 
+    {
+        transform.position = Vector3.zero;
+        body.velocity = Vector3.zero;
+    }
     public void OnDestroyed(bool forPlayer) => Destroy();
     private void OnCollisionEnter2D(Collision2D other)
     {
-       bool enemy = (other.gameObject.layer == LayerMask.NameToLayer("EnemyHealt") || other.gameObject.layer == LayerMask.NameToLayer("BulletEnemy"));
+       bool enemy = (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("BulletEnemy"));
        if (enemy) Destroy();
     }
 

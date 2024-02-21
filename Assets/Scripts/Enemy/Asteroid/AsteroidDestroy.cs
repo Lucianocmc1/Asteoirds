@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class AsteroidDestroy : EnemyHealt, IDestroy
+    
+    public class AsteroidDestroy : EnemyHealt, IDestroy,IEnemyInfo
 {
     [SerializeField] private GameObject particleDestroy;
     [SerializeField] private AudioClip newSfxDestroy;
@@ -21,6 +22,7 @@ namespace Enemy
     public void OnDestroyed(bool forPlayer) { Destroyed(forPlayer); }
    
     public EventHandler<EventSpawnEnemy> EventOnDestroy(  ) { return OnDestroyEnemy; }
+    public TypeEnemy GetTypeEnemy() => newDataEnemy.typeEnemy;
  }
 }
 

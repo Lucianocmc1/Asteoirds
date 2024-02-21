@@ -27,9 +27,9 @@ public class EnemyHealt : MonoBehaviour
     {
         ScoreManager.Instance.SetScore(dataEnemy.typeEnemy);
         transform.GetComponent<AudioSource>().PlayOneShot(audioDestroyed);
-        RespawnEnemy.Singlenton.RespawnEnemys();
+       // RespawnEnemy.Singlenton.RespawnEnemys();
         DropPowerUP();
-        WavesEnemy.Singlenton.RegisterDestroyed(this.gameObject);
+      
     }
 
     protected virtual void InitData(EnemySO newDataEnemy , AudioClip newAudioDestroyed )

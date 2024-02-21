@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OvniPooling : MonoBehaviour
+public class OvniPooling : MonoBehaviour , IPoolingEnemy
 {
 
     [SerializeField] private GameObject ovniPrefab;
@@ -55,4 +55,5 @@ public class OvniPooling : MonoBehaviour
         ovniList[ovniList.Count - 1].gameObject.SetActive(true); 
         return ovniList[ovniList.Count - 1]; 
     }
+    public GameObject RequestEnemy() => RequestOvni();
 }

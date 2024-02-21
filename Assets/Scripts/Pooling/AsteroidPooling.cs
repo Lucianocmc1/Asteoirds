@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidPooling : MonoBehaviour
+public class AsteroidPooling : MonoBehaviour , IPoolingEnemy
 {
     [SerializeField] private GameObject[] prefab;
     [SerializeField] private List<GameObject> asteroidsList;
@@ -48,5 +48,7 @@ public class AsteroidPooling : MonoBehaviour
         asteroidsList[asteroidsList.Count - 1].gameObject.SetActive(true); 
         return asteroidsList[asteroidsList.Count - 1]; 
     }
+
+    public GameObject RequestEnemy() => RequestAsteroid();
   
 }
