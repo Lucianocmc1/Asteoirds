@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class HealtsPower : MonoBehaviour
 {
+    [SerializeField] LayerMask layerMaskPlayer;
     private void OnTriggerEnter2D(Collider2D other) //configurado por layre que solo colisiona con player
     {
-        var playerLayer = other.gameObject.layer;
+        if (other.gameObject.layer != layerMaskPlayer) return;
         var player = other.gameObject.GetComponent<HealthShip>();
-        player.MoreHealt();
+        player?.MoreHealt();
         gameObject.SetActive(false);
     }
+
 }

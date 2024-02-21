@@ -35,8 +35,10 @@ public class OvniPooling : MonoBehaviour , IPoolingEnemy
         for (int i = 0; i < amount; i++)
         {
             var ovni = ovniPrefab; //instancia el ovni
-            ovni.gameObject.SetActive(false); // lo desactiva no lo elimina
-            ovniList.Add(ovni); //lo añade a la lista
+            var ovniInstance = Instantiate(ovni);
+            ovniInstance.transform.parent = transform;
+            ovniInstance.SetActive(false);
+            ovniList.Add(ovniInstance);
         }
     }
 
@@ -55,5 +57,6 @@ public class OvniPooling : MonoBehaviour , IPoolingEnemy
         ovniList[ovniList.Count - 1].gameObject.SetActive(true); 
         return ovniList[ovniList.Count - 1]; 
     }
-    public GameObject RequestEnemy() => RequestOvni();
+    
+   public GameObject RequestEnemy() => RequestOvni();
 }

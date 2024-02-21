@@ -26,10 +26,11 @@ public class AsteroidPooling : MonoBehaviour , IPoolingEnemy
         for (int i = 0; i < amount; i++)
         {
             int randomN = Random.Range(0, 3);
-            var asteroids = prefab[randomN]; 
-            asteroids.gameObject.SetActive(false);
-            asteroidsList.Add(asteroids);
-            //asteroids.transform.parent = transform;  
+            var asteroids = prefab[randomN];
+            var asteroidInstance = Instantiate(asteroids);
+            asteroidInstance.transform.parent = transform;
+            asteroidInstance.SetActive(false);
+            asteroidsList.Add(asteroidInstance); 
         }
     }
 
@@ -50,5 +51,5 @@ public class AsteroidPooling : MonoBehaviour , IPoolingEnemy
     }
 
     public GameObject RequestEnemy() => RequestAsteroid();
-  
+    
 }

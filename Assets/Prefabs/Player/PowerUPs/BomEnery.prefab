@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5713150748563650638}
   - component: {fileID: 5713150748563650639}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bomb_energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5713150750115403429}
   - component: {fileID: -6356200511686861612}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BomEnery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
