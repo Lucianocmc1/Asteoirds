@@ -1,32 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[SerializeField]
-public class DictionaryGenerics<T> 
+[Serializable]
+public class DictionaryGenerics<TKey, TValue>
 {
-    [SerializeField] GenericDataDictionary<Dictionary<T,T>> dataDictionary;
-    public Dictionary<T,T> ToDictionary()
+    [SerializeField] List<GenericDataDictionary<TKey, TValue>> dataDictionary;
+    public Dictionary<TKey, TValue> ToDictionary()
     {
-        Dictionary<T, T> newDict = new Dictionary<T, T>();
-        foreach ( var x in dataDictionary)
-        {
-           
-        
-        }
-       
-        foreach (var enemy in dictionaryEnemies)
-        {
-            newDict.Add(enemy.typeEnemy, enemy.score);
-        }
+       Dictionary<TKey, TValue> newDict = new Dictionary<TKey, TValue>();
+       foreach (var data in dataDictionary)
+       {
+         newDict.Add(data.key, data.value);
+       }
 
         return newDict;
     }
 }
 
-[SerializeField]
-public class GenericDataDictionary<T>
+[Serializable]
+public class GenericDataDictionary<TKey, TValue>
 {
-    public T key;
-    public T value;
+    public TKey key;
+    public TValue value;
 }

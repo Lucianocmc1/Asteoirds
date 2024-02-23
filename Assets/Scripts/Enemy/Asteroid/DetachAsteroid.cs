@@ -16,14 +16,12 @@ public class DetachAsteroid : MonoBehaviour
           {
             asteroid = AsteroidMediumPooling.Instance.RequestEnemy();
             asteroid.transform.position = position;
-                Debug.Log("se separo en asteriodes medianos?");
-            }
+          }
           else if( enemy.typeEnemy == TypeEnemy.asteroidMedium)
           { 
             asteroid = AsteroidSmallPooling.Instance.RequestEnemy();
             asteroid.transform.position = position;
-                Debug.Log("se separo en asteriodes chicos?");
-            }
+          }
         }
         
     }
