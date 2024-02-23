@@ -17,8 +17,6 @@ public class EnemyHealt : MonoBehaviour
     {
         if (forPlayer)
          DestroyedForPlayer();
-        else
-         Debug.LogError("SpawnPowerUP.Singlenton o RespawnEnemy.Singlenton es nulo. Asegúrate de asignar referencias en el Inspector.");
 
         this.gameObject.SetActive(false);
     }
@@ -27,9 +25,7 @@ public class EnemyHealt : MonoBehaviour
     {
         ScoreManager.Instance.SetScore(dataEnemy.typeEnemy);
         transform.GetComponent<AudioSource>().PlayOneShot(audioDestroyed);
-       // RespawnEnemy.Singlenton.RespawnEnemys();
         DropPowerUP();
-      
     }
 
     protected virtual void InitData(EnemySO newDataEnemy , AudioClip newAudioDestroyed )

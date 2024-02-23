@@ -18,10 +18,6 @@ public class Tools : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
-   
-
   
 }
 

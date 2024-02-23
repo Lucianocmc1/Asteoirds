@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdb74a3ed9126248ad68b74a24f735f, type: 3}
   m_Name: AsteroidSmall
   m_EditorClassIdentifier: 
-  typeEnemy: 0
+  typeEnemy: 2
   speed: 4
+  lootDifficulty: 0

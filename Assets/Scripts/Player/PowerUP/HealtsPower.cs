@@ -7,10 +7,11 @@ public class HealtsPower : MonoBehaviour
     [SerializeField] LayerMask layerMaskPlayer;
     private void OnTriggerEnter2D(Collider2D other) //configurado por layre que solo colisiona con player
     {
-        if (other.gameObject.layer != layerMaskPlayer) return;
-        var player = other.gameObject.GetComponent<HealthShip>();
+        var player = other.GetComponent<IHealtPlayer>(); 
+        if (player is not null )
         player?.MoreHealt();
-        gameObject.SetActive(false);
+        gameObject.SetActive(player is null);
+        
     }
 
 }

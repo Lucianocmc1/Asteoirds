@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7445de47a1392504f827683768bb6818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: 88c771b7b6c2ae84d92f87aff57cc4c7, type: 2}
+  enemy: {fileID: 11400000, guid: 4a5969a95c3ac2b4d8e71ee55ad5688b, type: 2}
   rotateMin: 30
   rotateMax: 60
 --- !u!114 &-7853138623281400682
@@ -325,6 +325,7 @@ MonoBehaviour:
   particleDestroy: {fileID: 0}
   newSfxDestroy: {fileID: 8300000, guid: 16747251e42cd9a488a72c8ef3b7d377, type: 3}
   newDataEnemy: {fileID: 11400000, guid: 4a5969a95c3ac2b4d8e71ee55ad5688b, type: 2}
+  detach: 0
 --- !u!114 &1401656462477365049
 MonoBehaviour:
   m_ObjectHideFlags: 0

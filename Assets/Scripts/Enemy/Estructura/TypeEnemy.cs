@@ -1,6 +1,8 @@
 enum TypeAsteroid { small,medium,big }
 public enum TypeEnemy
 {
-    asteroid,
+    asteroidBig,
+    asteroidMedium,
+    asteroidSmall,
     ovni,
 }

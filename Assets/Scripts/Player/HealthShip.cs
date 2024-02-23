@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthShip : MonoBehaviour, IDestroy
+public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
 {
     [SerializeField] Transform positionTemplate;
     [SerializeField] GameObject templeateHealt;
@@ -17,7 +17,7 @@ public class HealthShip : MonoBehaviour, IDestroy
     {
        body = GetComponent<Rigidbody2D>();
        for (int i = healtInitial; i >= 1; i--)
-        InstanceHealt();
+       InstanceHealt();
     }
     void InstanceHealt()
     {

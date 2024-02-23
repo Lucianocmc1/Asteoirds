@@ -6,19 +6,21 @@ using UnityEngine;
 
 namespace Enemy
 {
-    
-    public class AsteroidDestroy : EnemyHealt, IDestroy,IEnemyInfo
+public class AsteroidDestroy : EnemyHealt, IDestroy,IEnemyInfo
 {
-    [SerializeField] private GameObject particleDestroy;
-    [SerializeField] private AudioClip newSfxDestroy;
+    [SerializeField] GameObject particleDestroy;
+    [SerializeField] AudioClip newSfxDestroy;
     [SerializeField] EnemySO newDataEnemy;
+    [SerializeField] bool detach;
+    DetachAsteroid spawnAsteroid;
     public event EventHandler<EventSpawnEnemy> OnDestroyEnemy;
     
     void Start()
     {
         InitData(newDataEnemy,newSfxDestroy);
+        if (detach) spawnAsteroid = FindObjectOfType<DetachAsteroid>();
     }
-    public void OnDisable() { OnDestroyEnemy?.Invoke(this, new EventSpawnEnemy(this.gameObject)); }
+    public void OnDisable() {   if (spawnAsteroid != null) spawnAsteroid.Death(transform.position, newDataEnemy);}
     public void OnDestroyed(bool forPlayer) { Destroyed(forPlayer); }
    
     public EventHandler<EventSpawnEnemy> EventOnDestroy(  ) { return OnDestroyEnemy; }

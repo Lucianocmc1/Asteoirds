@@ -118,8 +118,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc16a5fbb0915d45a01386a8b36b481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavesEnemy: {fileID: 0}
-  Positions:
+  minuteWaitAddEnemy: 1
+  secondLastStart: 3
+  spawnLastSeconds: 10
+  maxEnemy: 5
+  ammountEnemy: 2
+  listPoolingToAdd:
+  - {fileID: 0}
+  listPoolingInstancie:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  pointSpawn:
   - {fileID: 2552862388029372926}
   - {fileID: 2552862387928418498}
   - {fileID: 2552862387641193956}
@@ -128,8 +138,10 @@ MonoBehaviour:
   - {fileID: 2552862388053965605}
   - {fileID: 2552862388106492738}
   - {fileID: 2552862387761971873}
-  maxEnemy: 0
-  ammountEnemy: 0
+  - {fileID: 5138454551057102241}
+  - {fileID: 223964252135772659}
+  - {fileID: 5371517748139317637}
+  - {fileID: 1158075752127069364}
 --- !u!1 &2552862387641193957
 GameObject:
   m_ObjectHideFlags: 0

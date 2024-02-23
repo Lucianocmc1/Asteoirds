@@ -212,6 +212,7 @@ MonoBehaviour:
   particleDestroy: {fileID: 0}
   newSfxDestroy: {fileID: 8300000, guid: 16747251e42cd9a488a72c8ef3b7d377, type: 3}
   newDataEnemy: {fileID: 11400000, guid: 831da52e1618b5f4cb7864a62516a3d9, type: 2}
+  detach: 1
 --- !u!114 &4085120599518509270
 MonoBehaviour:
   m_ObjectHideFlags: 0

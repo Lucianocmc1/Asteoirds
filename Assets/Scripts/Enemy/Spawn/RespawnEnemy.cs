@@ -48,11 +48,14 @@ public class RespawnEnemy : MonoBehaviour
 
     void RespawnEnemys()
     {
+       for(int i = 0; i < ammountEnemy; i++)
+       { 
         Vector2 pointRespawn = pointSpawn[UnityEngine.Random.Range(0, this.pointSpawn.Length)].transform.position;
         var selectPrefabRandom = UnityEngine.Random.Range(0, listPoolingInstancie.Count);
-        GameObject pooling = listPoolingInstancie?[selectPrefabRandom];
+        GameObject pooling = listPoolingInstancie[selectPrefabRandom];
         GameObject enemy = RequestEnemyPooling(pooling);
         enemy.transform.position = pointRespawn;
+       }    
     }
      
     void AddEnemyToSpawn()
