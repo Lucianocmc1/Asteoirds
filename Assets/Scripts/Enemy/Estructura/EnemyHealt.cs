@@ -33,6 +33,6 @@ public class EnemyHealt : MonoBehaviour
      dataEnemy = newDataEnemy;
      audioDestroyed = newAudioDestroyed;
     }  
-    protected void DropPowerUP( )=> SpawnPowerUP.Singlenton.InstantiatePowerUP(transform.position, dataEnemy.GetLootProbability());
+    protected void DropPowerUP( )=> SpawnPowerUP.Singlenton.InstantiatePowerUP(transform.position, dataEnemy.typeEnemy);
 
 }

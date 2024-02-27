@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPooling : MonoBehaviour
+public class BulletPooling : MonoBehaviour , IBulletPooling
 {
     [SerializeField] private GameObject LaserPrefab;
     [SerializeField] private int poolSize = 10;
@@ -47,4 +47,6 @@ public class BulletPooling : MonoBehaviour
         laserList[ laserList.Count - 1 ].gameObject.SetActive(true); //añade 1 laser de hacer falta a la lista y lo coloca en lo ultimo
         return laserList[laserList.Count - 1]; //me lo retorna el ultimo creado
     }
+
+    public GameObject GetBullet()=> RequestLaser();
 }

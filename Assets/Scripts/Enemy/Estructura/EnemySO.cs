@@ -10,6 +10,4 @@ public class EnemySO : ScriptableObject
 {
     public TypeEnemy typeEnemy;
     public float speed;
-    [SerializeField,Range( 0f, 1f)] float lootDifficulty;
-    public float GetLootProbability() => lootDifficulty;
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SocialPlatforms;
@@ -10,8 +11,9 @@ using UnityEngine.UIElements;
 public class SpawnPowerUP : MonoBehaviour
 {
     [SerializeField] GameObject[] packetPowerUP;
-    [Tooltip("Solo necesitas asegurarte de que la suma de los porcentajes sea 100.")]
+    [Tooltip("Solo Asegurarse de que la suma de los porcentajes sea 100.")]
     [SerializeField] DictionaryGenerics<GameObject, float> dictionaryGenericsPowerUP;
+    [Tooltip("El porcentaje maximo es 100.")]
     [SerializeField] DictionaryGenerics<TypeEnemy, float> dictionaryGenericsEnemys;
     Dictionary<GameObject,float> statsDropPowerUP = new Dictionary<GameObject,float>();
     Dictionary<TypeEnemy,float> statsDropEnemy = new Dictionary<TypeEnemy,float>();
@@ -25,40 +27,36 @@ public class SpawnPowerUP : MonoBehaviour
      statsDropPowerUP = dictionaryGenericsPowerUP.ToDictionary();
     }
 
-    public void InstantiatePowerUP(Vector3 position, float lootDifficulty)
+    public void InstantiatePowerUP(Vector3 position, TypeEnemy typeEnemy)
     {
-     bool drop;
-     CanDropEnemy(out drop);
-     if (!drop) return;
-     DropPowerUp(position);
+      if (!CanDropEnemy(typeEnemy)) return;
+      DropPowerUp(position);
     }
 
-    void CanDropEnemy(out bool drop)
+    bool CanDropEnemy(TypeEnemy typeEnemy)
     {
-        float randomValue = UnityEngine.Random.Range(0f, 100f);
-        float cumulativePercentage = 0f;
-        drop = false;
-        foreach (var typeDrop in statsDropEnemy)
-        {
-            cumulativePercentage += typeDrop.Value;
-            if (randomValue <= cumulativePercentage)
-            drop = true;
-        }
+      float randomValue = UnityEngine.Random.Range(0f, 100f);
+      float dropPercentaje = 0f;
+        
+      if(statsDropEnemy.TryGetValue(typeEnemy, out float dropProbability))
+      dropPercentaje = dropProbability;
+      
+      return randomValue <= dropPercentaje;
     }
     void DropPowerUp(Vector3 position )
     {
       float randomValue = UnityEngine.Random.Range(0f, 100f);
       float cumulativePercentage = 0f;
         
-        foreach (var powers in statsDropPowerUP)
-        {
-            cumulativePercentage += powers.Value;
-            if (randomValue <= cumulativePercentage)
-            {
-                Instantiate(powers.Key, position, Quaternion.identity);
-                break;  
-            }
-        }
+      foreach (var powers in statsDropPowerUP)
+      {
+         cumulativePercentage += powers.Value;
+         if (randomValue <= cumulativePercentage)
+         {
+           Instantiate(powers.Key, position, Quaternion.identity);
+           break;  
+         }
+      }
     }
 }
  

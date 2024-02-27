@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletEnemiPooling : MonoBehaviour
+public class BulletEnemiPooling : MonoBehaviour , IBulletPooling
 {
     [SerializeField] private GameObject LaserPrefab;
     [SerializeField] private int poolSize = 10;
@@ -67,4 +67,5 @@ public class BulletEnemiPooling : MonoBehaviour
         return laserList[laserList.Count - 1]; //me lo retorna el ultimo creado
 
     }
+    public GameObject GetBullet() => RequestLaser();
 }

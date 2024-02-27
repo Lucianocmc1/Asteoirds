@@ -15,4 +15,5 @@ MonoBehaviour:
   iconPower: {fileID: -923848204, guid: 66210b435e213d84390aa279c84887c9, type: 3}
   timeMax: 10
   timeMin: 0
+  ammountUses: 3
   prefab: {fileID: 3341438055753672169, guid: d03a2c04e2acd08459958152c02b622f, type: 3}

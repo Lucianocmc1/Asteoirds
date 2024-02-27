@@ -9,6 +9,7 @@ public class DataPowerSO : ScriptableObject
     public Sprite iconPower;
     public float timeMax;
     public float timeMin;
+    public int ammountUses;
     public GameObject prefab;
         
     public void powerReset()=> timeMin = 1;

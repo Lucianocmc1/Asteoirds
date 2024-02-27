@@ -10,6 +10,7 @@ public class InputPC : MonoBehaviour
     const string axisX = "Horizontal";
     const string axisY = "Vertical";
     const KeyCode spaceBar = KeyCode.Space;
+    const KeyCode enter = KeyCode.Return;
     const string burst = "Fire2";
     const string Fire = "Fire1";
 
@@ -19,6 +20,7 @@ public class InputPC : MonoBehaviour
     public float OnFire() { return Input.GetAxis(Fire); }
     public float OnBurst() { return Input.GetAxis(burst); }
     public Vector2 GetDirection() { return new Vector2(GetAxisX(), GetAxisY()); }
+    public bool GetEnter()=> Input.GetKeyDown(enter);
 
     //   void RotateShip()
 }

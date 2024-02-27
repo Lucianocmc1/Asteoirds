@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
 {
@@ -12,7 +13,7 @@ public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
     [SerializeField] LayerMask layerBulletEnemy;
     int index = 0;
     Rigidbody2D body;
-
+    public UnityEvent OnPlayerDeath;
     void Start()
     {
        body = GetComponent<Rigidbody2D>();
@@ -38,13 +39,18 @@ public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
 
     void Destroy()
     {
-        if( index > 0)
+        if( index > 1)
         { 
          LowHealt();
          Respawn();
          return;
         }
-        Debug.Log("Lost Over");
+        else
+        {
+         OnPlayerDeath.Invoke();
+         gameObject.SetActive(false);
+        }
+        
     }
     void Respawn() 
     {

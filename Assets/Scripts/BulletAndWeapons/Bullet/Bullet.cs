@@ -5,22 +5,22 @@ using UnityEngine;
 
 public class Bullet: MonoBehaviour
 {
+    [SerializeField] BulletSO bulletData;
     float speed;
     Vector2 direction;
-    public void Shoot(Vector2 positionOut, Vector2 player,Quaternion rotation ,float speed )
+    public void Shoot(Vector2 positionOut, Vector2 player,float speedShip )
     {
         transform.position = positionOut;
-        transform.rotation = rotation;
         StartCoroutine(BulletMovement());
         direction = positionOut - player;
-        this.speed = speed;
+        speed = bulletData.speed + speedShip;
     }
 
     private IEnumerator BulletMovement()
     {
         while (gameObject.activeSelf)
         {
-            this.transform.Translate( direction * (Time.deltaTime * speed), Space.Self);
+            transform.Translate( direction * (Time.deltaTime * speed), Space.Self);
             yield return null;
         }
     }

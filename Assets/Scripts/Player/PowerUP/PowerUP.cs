@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,28 +11,38 @@ public class PowerUP : MonoBehaviour
    [SerializeField] Image iconPower;
    [SerializeField] DataPowerSO power;
    [SerializeField] DataPowerSO powerDefault;
-   
+   [SerializeField] TextMeshProUGUI txtAmountUses;
+    int amountUses = 0;
     private void Start()=>  SetPower(powerDefault);
     void Update()
     {
-        if (input.OnPressBar() && ( power.timeMin == 0) )
-        OnPower();
-
-        power.timeMin = ((power.timeMin / power.timeMax) <= 0) ? 0 : (power.timeMin - Time.deltaTime)  ;
-        blur.fillAmount = ( power.timeMin / power.timeMax );  // 15/1 ahora, yo quiero 1/15 
+      if (CanUsesPower())
+      OnPower();
+      
+      txtAmountUses.text = amountUses.ToString();
+      IconActive();
+      UpdateBarEnergy();
     }
+    bool CanUsesPower() => input.OnPressBar() && (power.timeMin == 0) && amountUses > 0;
     void OnPower()
     {
+      amountUses--;
       Instantiate(power.prefab, transform.position,Quaternion.identity);
-      power.timeMin = 15f;
+      power.timeMin = power.timeMax;
     }
     public void PowerDefault()=> power = powerDefault;
+    void IconActive() => iconPower.gameObject.active = amountUses > 0; 
     public void SetPower( DataPowerSO powerUP)
     {
-        power = powerUP;
-        power.powerReset();
-        iconPower.sprite = powerUP.iconPower;
-        Debug.Log("se ejecuto powerUP");
+     power = powerUP;
+     power.powerReset();
+     iconPower.sprite = powerUP.iconPower;
+     amountUses = powerUP.ammountUses;
     }
 
+    void UpdateBarEnergy()
+    {
+      power.timeMin = ((power.timeMin / power.timeMax) <= 0) ? 0 : (power.timeMin - Time.deltaTime);
+      blur.fillAmount = (power.timeMin / power.timeMax);
+    }
 }

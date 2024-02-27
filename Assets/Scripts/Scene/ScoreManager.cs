@@ -32,7 +32,7 @@ public class ScoreManager : MonoBehaviour
     private void Update()
     {
         timeValue += Time.deltaTime;
-        // Convierte el tiempo transcurrido a horas, minutos y segundos
+        
         hours = Mathf.FloorToInt(timeValue / 3600);
         minutes = Mathf.FloorToInt((timeValue % 3600) / 60);
         seconds = Mathf.FloorToInt(timeValue % 60);
@@ -43,5 +43,7 @@ public class ScoreManager : MonoBehaviour
     }
     void MoreScore(TypeEnemy enemy)=>  textScore.text = (dictionaryEnemy.ContainsKey(enemy)) ? (score += dictionaryEnemy[enemy]).ToString() : score.ToString(); 
     public void SetScore(TypeEnemy typeEnemy) { MoreScore(typeEnemy); }
+
+    public int GetScore() => score; 
     public int GetMinutes() => minutes;
 }

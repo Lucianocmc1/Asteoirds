@@ -12,10 +12,13 @@ public class MoveShip : MonoBehaviour
     [SerializeField] BarEnergy barEnergy;
     [SerializeField] float minEnergyBurst;
     bool burst = false;
-    Rigidbody2D rb;
+    Rigidbody2D body;
+    IBoundsChecker boundsChecker;
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
+        boundsChecker = new ScreenBoundsChecker();
     }
 
     // Update is called once per frame
@@ -35,27 +38,35 @@ public class MoveShip : MonoBehaviour
     {
         var ship = player;
         var speedNormal = Vector2.up * ship.speed;
-        var speed = rb.velocity.magnitude;
+        var speed = body.velocity.magnitude;
 
-        if(barEnergy.GetEnergy() < 100f)
+        if (barEnergy.GetEnergy() < 100f)
         barEnergy.MoreEnergy();
 
-        if (input.GetAxisY() > 0f && speed < ship.speedBurstMax) 
-        {
-            if (!burst && speed < ship.speedMax)
-            {
-                rb.AddRelativeForce(speedNormal);
-            }
-            else if (burst && SufficientPower())
-            {
-                
-                rb.AddRelativeForce(speedNormal * ship.speedBurst);
-                barEnergy.LowEnergy();
-                return;
-            }
+      /*  Vector3 newPosition = transform.position + new Vector3(0f, input.GetAxisY() * ship.speed * Time.deltaTime, 0f); ;
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(newPosition);
+
+        if (boundsChecker.IsWithinBounds(screenPosition))
+        { 
+          rb.velocity = Vector2.zero;
+          return;
         }
+      */
+
+      if (input.GetAxisY() > 0f && speed < ship.speedBurstMax) 
+      {
+        if (!burst && speed < ship.speedMax)
+        {
+         body.AddRelativeForce(speedNormal);
+        }
+        else if (burst && SufficientPower())
+        {
+          body.AddRelativeForce(speedNormal * ship.speedBurst);
+          barEnergy.LowEnergy();
+        }
+      }
+
     }
-    
     void Rotate() => transform.Rotate(0f, 0f, -input.GetAxisX() * player.speedRotate * Time.deltaTime);
 
     bool SufficientPower() => barEnergy.GetEnergy() > minEnergyBurst; 
