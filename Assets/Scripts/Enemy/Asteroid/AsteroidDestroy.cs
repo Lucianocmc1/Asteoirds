@@ -8,7 +8,6 @@ namespace Enemy
 {
 public class AsteroidDestroy : EnemyHealt, IDestroy,IEnemyInfo
 {
-    [SerializeField] ParticleAsteroidPooling particleDestroy;
     [SerializeField] AudioClip newSfxDestroy;
     [SerializeField] EnemySO newDataEnemy;
     [SerializeField] bool detach;
