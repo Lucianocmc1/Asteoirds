@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df5bb35842b40940a16ad802c1f1f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleDestroy: {fileID: 0}
+  particleDestroy: {fileID: 8731125104717118854, guid: 32f54674a7f378547b9365b8e8b3463a, type: 3}
   newSfxDestroy: {fileID: 8300000, guid: 16747251e42cd9a488a72c8ef3b7d377, type: 3}
   newDataEnemy: {fileID: 11400000, guid: 4a5969a95c3ac2b4d8e71ee55ad5688b, type: 2}
   detach: 0

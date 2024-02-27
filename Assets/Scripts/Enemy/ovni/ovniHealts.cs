@@ -10,7 +10,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 namespace Enemy {
     public class ovniHealts : EnemyHealt, IDestroy , IEnemyInfo
     {
-    [SerializeField] private GameObject particleDestroy;
+    [SerializeField] private ParticleAsteroidPooling particleDestroy;
     [SerializeField] private AudioClip sfxDestroy;
     [SerializeField] EnemySO newDataEnemy;
     [SerializeField] int lifeAmmount;
@@ -20,7 +20,7 @@ namespace Enemy {
         void Start() 
         {
             enty = new EventSpawnEnemy(this.gameObject);
-            InitData(newDataEnemy,sfxDestroy);
+            InitData(newDataEnemy,sfxDestroy, null);
         } 
     void LowHealt(bool forPlayer)
     {

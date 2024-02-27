@@ -8,7 +8,7 @@ namespace Enemy
 {
 public class AsteroidDestroy : EnemyHealt, IDestroy,IEnemyInfo
 {
-    [SerializeField] GameObject particleDestroy;
+    [SerializeField] ParticleAsteroidPooling particleDestroy;
     [SerializeField] AudioClip newSfxDestroy;
     [SerializeField] EnemySO newDataEnemy;
     [SerializeField] bool detach;
@@ -17,7 +17,7 @@ public class AsteroidDestroy : EnemyHealt, IDestroy,IEnemyInfo
     
     void Start()
     {
-        InitData(newDataEnemy,newSfxDestroy);
+        InitData(newDataEnemy,newSfxDestroy, ParticleAsteroidPooling.Instance );
         if (detach) spawnAsteroid = FindObjectOfType<DetachAsteroid>();
     }
     public void OnDisable() {   if (spawnAsteroid != null) spawnAsteroid.Death(transform.position, newDataEnemy);}

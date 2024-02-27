@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyHealt : MonoBehaviour
 {
     protected EnemySO dataEnemy;
+    protected ParticleAsteroidPooling particleDestroyed;
     protected AudioClip audioDestroyed;
     protected void OnCollisionEnter2D(Collision2D other)
     {
@@ -18,9 +19,16 @@ public class EnemyHealt : MonoBehaviour
         if (forPlayer)
          DestroyedForPlayer();
 
+        if (particleDestroyed != null)
+        InstanceParticleDestroy();
         this.gameObject.SetActive(false);
     }
 
+    protected void InstanceParticleDestroy()
+    {
+      var particle =  particleDestroyed.GetSystemParticle();
+      particle.transform.position = transform.position;
+    }
     protected void DestroyedForPlayer()
     {
         ScoreManager.Instance.SetScore(dataEnemy.typeEnemy);
@@ -28,9 +36,10 @@ public class EnemyHealt : MonoBehaviour
         DropPowerUP();
     }
 
-    protected virtual void InitData(EnemySO newDataEnemy , AudioClip newAudioDestroyed )
+    protected virtual void InitData(EnemySO newDataEnemy , AudioClip newAudioDestroyed, ParticleAsteroidPooling fvxDestroyed)
     { 
      dataEnemy = newDataEnemy;
+     particleDestroyed = fvxDestroyed;
      audioDestroyed = newAudioDestroyed;
     }  
     protected void DropPowerUP( )=> SpawnPowerUP.Singlenton.InstantiatePowerUP(transform.position, dataEnemy.typeEnemy);
