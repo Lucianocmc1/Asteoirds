@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeEnemy: 1
   speed: 2.5
-  lootDifficulty: 0.672
+  durationFlash: 0.01
+  colorFlash: {r: 0.8867924, g: 0.28563026, b: 0.0292809, a: 1}

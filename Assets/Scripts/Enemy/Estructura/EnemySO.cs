@@ -10,4 +10,6 @@ public class EnemySO : ScriptableObject
 {
     public TypeEnemy typeEnemy;
     public float speed;
+    public float durationFlash;
+    public Color colorFlash;
 }

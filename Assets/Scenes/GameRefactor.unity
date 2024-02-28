@@ -1145,8 +1145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammountTopScore: 5
-  textScore: {fileID: 0}
-  inputName: {fileID: 0}
+  textScore: {fileID: 652423647}
+  inputName: {fileID: 1236199988}
 --- !u!114 &3220378465624991420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,13 +1184,69 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 598806574, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 598806574, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1440
+      objectReference: {fileID: 0}
+    - target: {fileID: 598806574, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 598806574, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1011780226, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
       propertyPath: m_Name
       value: GameOver
       objectReference: {fileID: 0}
     - target: {fileID: 1011780226, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011780227, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 28.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011780227, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -489.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236199987, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236199988, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236199988, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_ContentType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236199988, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_KeyboardType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236199988, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845196157, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845196159, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845196159, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3754592816847112819, guid: 8fcd46ba7ef1ddd4297a4a84d3c121ef, type: 3}
       propertyPath: m_Name

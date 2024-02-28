@@ -97,7 +97,6 @@ public class DataGame : MonoBehaviour
       {
        string namePlayer = scorePoint.Key;
        int score = scorePoint.Value;
-
        textScore.text += string.Format("{0} - {1} : {2}\n", top++, namePlayer, score);
       }
      end = true;

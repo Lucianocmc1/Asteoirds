@@ -15,12 +15,14 @@ namespace Enemy {
     [SerializeField] EnemySO newDataEnemy;
     [SerializeField] int lifeAmmount;
 
-    EventSpawnEnemy enty;
-    public event EventHandler<EventSpawnEnemy> OnDestroyEnemy;
+   // EventSpawnEnemy enty;
+   // public event EventHandler<EventSpawnEnemy> OnDestroyEnemy;
         void Start() 
         {
-            enty = new EventSpawnEnemy(this.gameObject);
-            InitData(newDataEnemy,sfxDestroy, null);
+            var spriteEnemy = transform.GetChild(0);
+         //   enty = new EventSpawnEnemy(this.gameObject);
+            InitData(newDataEnemy,particleDestroy, spriteEnemy.GetComponent<SpriteRenderer>() );
+            InitAudio(GetComponent<AudioSource>(), sfxDestroy);
         } 
     void LowHealt(bool forPlayer)
     {
@@ -32,7 +34,7 @@ namespace Enemy {
    
     public void OnDisable()
     {
-        OnDestroyEnemy?.Invoke(this, enty); // le avisa al wavesEnemy? 
+        //OnDestroyEnemy?.Invoke(this, enty); // le avisa al wavesEnemy? 
     }
      public TypeEnemy GetTypeEnemy() => newDataEnemy.typeEnemy;
   }
