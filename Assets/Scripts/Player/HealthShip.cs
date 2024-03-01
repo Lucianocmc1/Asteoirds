@@ -29,7 +29,6 @@ public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
         HealtShipUI.Instance.AddHealt(health, index);
         index++;
     }
-
     public void MoreHealt()=> InstanceHealt();
     void LowHealt() 
     {

@@ -37,7 +37,7 @@ public class GetRefencie : MonoBehaviour
         return null;
     }
 
-    public GameObject GetReferencePoolingInstancie(TypeEnemy typeEnemy) //where T : IGetSystemParticle
+    public GameObject GetReferencePoolingInstancie(TypeEnemy typeEnemy) //where T : IGetSystemParticle // va a devolver la referencia del gameObject pooling
     {
         if (poolingInstance.ContainsKey(typeEnemy))
             return poolingInstance[typeEnemy];
@@ -49,6 +49,9 @@ public class GetRefencie : MonoBehaviour
 
 
     public DetachAsteroid GetDeatchAsteroid() { return deatchAsteroid;}
+
+
+    public ShipReference GetShipReference() => ShipReference.Singlenton;
 }
 
 //referencias pooling = gameObject;

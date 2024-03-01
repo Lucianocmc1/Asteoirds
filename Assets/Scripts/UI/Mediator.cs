@@ -8,15 +8,18 @@ public class Mediator : MonoBehaviour
   [SerializeField] HealthShip eventDie;
   [SerializeField] GameObject panelGameOver;
 
-    private void Start()
-    {
-        panelGameOver.SetActive(false);
-        eventDie.OnPlayerDeath.AddListener(HandlePlayerDeath);
-    }
+  private void Start()
+  {
+     panelGameOver.SetActive(false);
+     eventDie.OnPlayerDeath.AddListener(HandlePlayerDeath);
+  }
 
-    void HandlePlayerDeath()
-    {
-        panelGameOver.SetActive(true);
-        gameData.Active();
-    }
+  void HandlePlayerDeath()
+  {
+     panelGameOver.SetActive(true);
+     gameData.Active();
+  }
 }
+// este hace de mediator entre PanelGameOver
+//
+//

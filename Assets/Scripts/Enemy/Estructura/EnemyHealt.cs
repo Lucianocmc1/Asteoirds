@@ -1,8 +1,5 @@
 using Enemy;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Threading.Tasks;
 
@@ -15,7 +12,7 @@ public class EnemyHealt: MonoBehaviour
     protected AudioSource audioSource;
     protected void OnCollisionEnter2D(Collision2D other)
     {
-        bool player = (other.gameObject.layer == LayerMask.NameToLayer("Player")) || other.gameObject.layer == LayerMask.NameToLayer("BulletPlayer");
+        bool player = ((other.gameObject.layer == LayerMask.NameToLayer("Player")) || other.gameObject.layer == LayerMask.NameToLayer("BulletPlayer") || other.gameObject.layer == LayerMask.NameToLayer("Collision Enemy and Bullet") );
         if (player)
         Destroyed(true);
     }

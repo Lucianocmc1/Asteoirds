@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagers : MonoBehaviour
 {
-    public  void GameRetry()
+    public  void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
         Time.timeScale = 1.0f;

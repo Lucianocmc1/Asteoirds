@@ -12,9 +12,7 @@ public class DataGame : MonoBehaviour
     [SerializeField] int ammountTopScore;
     [SerializeField] TextMeshProUGUI textScore;
     [SerializeField] TMP_InputField inputName;
-    Dictionary<string, int> playerScore = new Dictionary<string, int>();
     bool active = false;
-    bool end = false;
     List<KeyValuePair<string, int>> LoadScores()
     {
         List<KeyValuePair<string, int>> playerList = new List<KeyValuePair<string, int>>();
@@ -23,7 +21,6 @@ public class DataGame : MonoBehaviour
         {
             string playerName = PlayerPrefs.GetString($"PlayerName_{i}", "");
             int playerScore = PlayerPrefs.GetInt($"PlayerScore_{i}", 0);
-
             playerList.Add(new KeyValuePair<string, int>(playerName, playerScore));
         }
 
@@ -31,7 +28,7 @@ public class DataGame : MonoBehaviour
     }
     private void Update()
     {
-        if (active && Input.anyKeyDown && !end)
+        if (active && Input.anyKeyDown)
         {
           inputName.gameObject.SetActive(true);
           inputName.Select();
@@ -39,15 +36,13 @@ public class DataGame : MonoBehaviour
           if (Input.GetKey(KeyCode.Return))
           SendName();
         }
-        if(end && Input.anyKeyDown)
-        {
-            SceneManager.LoadScene(0);
-        }
+      
     }
 
     public void Active()=> active = true;
     public void SendName()
     {
+      inputName.interactable = false;
       textScore.enabled = false;
       if( inputName.text.Length <= 6 && inputName.text.Length >= 1)
       {
@@ -99,7 +94,7 @@ public class DataGame : MonoBehaviour
        int score = scorePoint.Value;
        textScore.text += string.Format("{0} - {1} : {2}\n", top++, namePlayer, score);
       }
-     end = true;
+     
    }
    
 }

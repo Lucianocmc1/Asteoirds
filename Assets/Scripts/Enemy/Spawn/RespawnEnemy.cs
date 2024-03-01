@@ -12,16 +12,17 @@ public class RespawnEnemy : MonoBehaviour
     [SerializeField] int spawnLastSeconds;
     [SerializeField] int maxEnemy;
     [SerializeField] int ammountEnemy;
-    [SerializeField] List<GameObject> listPoolingToAdd;
+    [SerializeField] List<TypeEnemy> listPoolingToAdds;
     [SerializeField] List<GameObject> listPoolingInstancie;  // des Serializar
     [SerializeField] Transform[] pointSpawn;
-  
+    private GetRefencie refencie;
     private static RespawnEnemy instance;
     public static RespawnEnemy Singlenton { get { return instance; } set { } }
 
     private void Start()
     {
-        InvokeRepeating("RespawnEnemys", secondLastStart, UnityEngine.Random.Range(1f, spawnLastSeconds));
+      refencie = GetRefencie.Singlenton;
+      InvokeRepeating("RespawnEnemys", secondLastStart, UnityEngine.Random.Range(1f, spawnLastSeconds));
     }
  
     private void Awake()
@@ -38,12 +39,11 @@ public class RespawnEnemy : MonoBehaviour
     }
     private void Update()
     {
-        if( (time + minuteWaitAddEnemy) <= ScoreManager.Instance.GetMinutes() && listPoolingToAdd.Count > 0)
+        if( (time + minuteWaitAddEnemy) <= ScoreManager.Instance.GetMinutes() && listPoolingToAdds.Count > 0)
         {
           AddEnemyToSpawn();
           time++ ;
         }
-            
     }
 
     void RespawnEnemys()
@@ -60,11 +60,11 @@ public class RespawnEnemy : MonoBehaviour
      
     void AddEnemyToSpawn()
     {
-      var lastpoolingEnemy = listPoolingToAdd.Count - 1;
-      var poolingEnemy = listPoolingToAdd[lastpoolingEnemy]; 
-      listPoolingInstancie.Add(poolingEnemy);
-      listPoolingToAdd.Remove(poolingEnemy);
-      
+      var lastpoolingEnemy = listPoolingToAdds.Count - 1;
+      var poolEnemy = listPoolingToAdds[lastpoolingEnemy]; // este me va a dar el ultimo enum añadido 
+      var referenciePool = refencie.GetReferencePoolingInstancie(poolEnemy);
+      listPoolingInstancie.Add(referenciePool);
+      listPoolingToAdds.Remove(poolEnemy);
     }
     /// <summary>
     ///  con el tiempo va agregando poolings a la lista de poolings a utilizar para invocar enemigos;

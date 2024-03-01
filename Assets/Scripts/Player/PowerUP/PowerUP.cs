@@ -12,6 +12,7 @@ public class PowerUP : MonoBehaviour , IPowerUP
    [SerializeField] DataPowerSO power;
    [SerializeField] DataPowerSO powerDefault;
    [SerializeField] TextMeshProUGUI txtAmountUses;
+   
     int amountUses = 0;
     private void Start()=>  SetPower(powerDefault);
     void Update()

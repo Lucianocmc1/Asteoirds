@@ -31,19 +31,18 @@ public class ScoreManager : MonoBehaviour
     }
     private void Update()
     {
-        timeValue += Time.deltaTime;
-        
-        hours = Mathf.FloorToInt(timeValue / 3600);
-        minutes = Mathf.FloorToInt((timeValue % 3600) / 60);
-        seconds = Mathf.FloorToInt(timeValue % 60);
+      timeValue += Time.deltaTime;
+       
+      hours = Mathf.FloorToInt(timeValue / 3600);
+      minutes = Mathf.FloorToInt((timeValue % 3600) / 60);
+      seconds = Mathf.FloorToInt(timeValue % 60);
 
-        string timeFormat = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+      string timeFormat = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
 
-        textTime.text = timeFormat;
+      textTime.text = timeFormat;
     }
     void MoreScore(TypeEnemy enemy)=>  textScore.text = (dictionaryEnemy.ContainsKey(enemy)) ? (score += dictionaryEnemy[enemy]).ToString() : score.ToString(); 
     public void SetScore(TypeEnemy typeEnemy) { MoreScore(typeEnemy); }
-
     public int GetScore() => score; 
     public int GetMinutes() => minutes;
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdb74a3ed9126248ad68b74a24f735f, type: 3}
   m_Name: Ovni
   m_EditorClassIdentifier: 
-  typeEnemy: 1
+  typeEnemy: 3
   speed: 2.5
   durationFlash: 0.01
   colorFlash: {r: 0.8867924, g: 0.28563026, b: 0.0292809, a: 1}
