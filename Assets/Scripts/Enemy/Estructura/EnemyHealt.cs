@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Threading.Tasks;
-public class EnemyHealt : MonoBehaviour
+
+public class EnemyHealt: MonoBehaviour
 {
     protected EnemySO dataEnemy;
-    protected ParticleAsteroidPooling particleDestroyed;
+    protected IGetSystemParticle particleDestroyed;
     protected AudioClip audioDestroyed;
     protected SpriteRenderer spriteRenderer;
     protected AudioSource audioSource;
-
     protected void OnCollisionEnter2D(Collision2D other)
     {
         bool player = (other.gameObject.layer == LayerMask.NameToLayer("Player")) || other.gameObject.layer == LayerMask.NameToLayer("BulletPlayer");
@@ -54,7 +54,7 @@ public class EnemyHealt : MonoBehaviour
        spriteRenderer.color = colorOrigin; 
     }
 
-    protected virtual void InitData(EnemySO newDataEnemy, ParticleAsteroidPooling fvxDestroyed, SpriteRenderer spriteRender)
+    protected virtual void InitData(EnemySO newDataEnemy, IGetSystemParticle fvxDestroyed, SpriteRenderer spriteRender)
     { 
      dataEnemy = newDataEnemy;
      particleDestroyed = fvxDestroyed;

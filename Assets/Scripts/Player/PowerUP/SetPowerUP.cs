@@ -10,7 +10,7 @@ public class SetPowerUP : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) //configurado por layre que solo colisiona con player
     {
         var playerLayer = other.gameObject.layer; 
-        var player = other.gameObject.GetComponent<PowerUP>();
+        var player = other.gameObject.GetComponent<IPowerUP>();
         var powerUP = Random.Range(0,powerUPList.list.Length);
 
         player?.SetPower(powerUPList.list[powerUP]);

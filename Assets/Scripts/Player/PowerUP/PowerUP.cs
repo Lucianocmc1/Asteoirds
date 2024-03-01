@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PowerUP : MonoBehaviour
+public class PowerUP : MonoBehaviour , IPowerUP
 {
    [SerializeField] InputPC input;
    [SerializeField] Image blur;

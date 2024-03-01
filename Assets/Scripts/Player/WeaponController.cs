@@ -10,7 +10,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] float cadenceShoot;
     [SerializeField] WeaponSO weapon;
     [SerializeField] BulletPooling bulletPooling;
-    AudioSource audio;
+    new AudioSource audio;
     Rigidbody2D body;
     float waitTime;
     private void Start()

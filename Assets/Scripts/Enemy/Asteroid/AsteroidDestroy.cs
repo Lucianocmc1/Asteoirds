@@ -12,31 +12,24 @@ public class AsteroidDestroy : EnemyHealt, IDestroy,IEnemyInfo
     [SerializeField] EnemySO newDataEnemy;
     [SerializeField] bool detach;
     DetachAsteroid spawnAsteroid;
-    //public event EventHandler<EventSpawnEnemy> OnDestroyEnemy;
-    
+    IGetSystemParticle particleDestroy;
+    GetRefencie refence;
+
     void Start()
     {
-        var spriteEnemy = transform.GetChild(0);
-        InitData(newDataEnemy, ParticleAsteroidPooling.Instance, spriteEnemy.GetComponent<SpriteRenderer>());
-        InitAudio(GetComponent<AudioSource>(), newSfxDestroy);
-        if (detach) spawnAsteroid = FindObjectOfType<DetachAsteroid>();
+      refence = GetRefencie.Singlenton;
+      particleDestroy = refence.GetReferenceParticle(newDataEnemy.typeEnemy);
+      var spriteEnemy = transform.GetChild(0);
+
+      InitData(newDataEnemy, particleDestroy, spriteEnemy.GetComponent<SpriteRenderer>());
+      InitAudio(GetComponent<AudioSource>(), newSfxDestroy);
+      if (detach) spawnAsteroid = refence.GetDeatchAsteroid();
     }
     public void OnDisable() {   if (spawnAsteroid != null) spawnAsteroid.Death(transform.position, newDataEnemy);}
     public void OnDestroyed(bool forPlayer) { Destroyed(forPlayer); }
    
+
     //public EventHandler<EventSpawnEnemy> EventOnDestroy(  ) { return OnDestroyEnemy; }
     public TypeEnemy GetTypeEnemy() => newDataEnemy.typeEnemy;
  }
 }
-
-// el event OnDestroyEnemy se va a ejecutar cuando se desactive ahora vamos a enlazar el OnDestroyEnemy 
-
-//todos los enemigos deberan tener la clase dropear 
-/*
- * DropPowerUP // dropeara powers
- * OnDestroyed // para que otros metodos accedan a destroy 
- * DestroyForPlayer // se invoca dentro de destroyed , si el jugador mata al enemigo 
- * y el metodo OnDisable 
- * EventOnDestroy // devuelve el evento EventHandler<EventSpawnEnemy>()  destroyEnemy
- * 
- */
