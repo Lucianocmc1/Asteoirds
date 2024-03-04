@@ -9,19 +9,12 @@ public class OvniPooling : MonoBehaviour , IPoolingEnemy
     [SerializeField] private int poolSize = 10;
     [SerializeField] private List<GameObject> ovniList;
 
-    private static OvniPooling instance;
-    public static OvniPooling Instance { get { return instance; } }   // lo podremos llammar desde otros scripts
+  //  private static OvniPooling instance;
+//    public static OvniPooling Instance { get { return instance; } }   // lo podremos llammar desde otros scripts
 
     private void Awake() //por si es llamdado mas de una ves no me va a duplicar la lista de pooling me elimina una
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+       
     }
 
 

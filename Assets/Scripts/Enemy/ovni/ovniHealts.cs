@@ -12,11 +12,11 @@ namespace Enemy
     [SerializeField] int lifeAmmount;
     IGetSystemParticle particleDestroy;
     GameObject poolingInstance;
-    GetRefencie refence;
+    AdapterServiceLocator refence;
     
     void Start() 
     {
-      refence = GetRefencie.Singlenton;
+      refence = AdapterServiceLocator.Singlenton;
       particleDestroy = refence.GetReferenceParticle(newDataEnemy.typeEnemy);
       var spriteEnemy = transform.GetChild(0);
 

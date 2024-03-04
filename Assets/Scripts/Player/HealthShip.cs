@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,14 +12,22 @@ public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
     [SerializeField] float offSet;
     [SerializeField] LayerMask layerEnemy;
     [SerializeField] LayerMask layerBulletEnemy;
+    [SerializeField] BarrierPower barrier;
+    readonly Transform _transform; 
     int index = 0;
     Rigidbody2D body;
     public UnityEvent OnPlayerDeath;
+    public HealthShip Instance { get { return this; } private set { } }
+    void Awake() 
+    {
+        var adapterServiceLocator = AdapterServiceLocator.Singlenton;
+        adapterServiceLocator.RegisterService<IHealtPlayer>(this);
+    }
     void Start()
     {
        body = GetComponent<Rigidbody2D>();
        for (int i = healtInitial; i >= 1; i--)
-       InstanceHealt();
+       InstanceHealt(); 
     }
     void InstanceHealt()
     {
@@ -42,6 +51,7 @@ public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
         { 
          LowHealt();
          Respawn();
+         InstanceBarrier();
          return;
         }
         else
@@ -62,5 +72,9 @@ public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
        bool enemy = (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("BulletEnemy"));
        if (enemy) Destroy();
     }
+    public void OnDeath() => InstanceBarrier();
+    void InstanceBarrier()=> barrier.gameObject.SetActive(true);
+    public HealthShip Get() => Instance;
 
+    public Transform GetTransform() => transform;
 }

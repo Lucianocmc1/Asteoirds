@@ -11,6 +11,6 @@ public class DataPowerSO : ScriptableObject
     public float timeMin;
     public int ammountUses;
     public GameObject prefab;
-        
+    public TypePower typePower;
     public void powerReset()=> timeMin = 1;
 }

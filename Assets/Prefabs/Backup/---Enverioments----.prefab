@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -409,7 +409,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1024,6 +1024,7 @@ MonoBehaviour:
   layerBulletEnemy:
     serializedVersion: 2
     m_Bits: 512
+  barrier: {fileID: 0}
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -1074,6 +1075,7 @@ MonoBehaviour:
   outBullet: {fileID: 2211340830959161902}
   cadenceShoot: 0.2
   weapon: {fileID: 11400000, guid: ed9496fad28c3d646ad78efe35d3508c, type: 2}
+  bulletPooling: {fileID: 0}
 --- !u!114 &8199497859749575033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,7 +1146,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

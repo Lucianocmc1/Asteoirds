@@ -242,7 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df5bb35842b40940a16ad802c1f1f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleDestroy: {fileID: 8731125104717118854, guid: 32f54674a7f378547b9365b8e8b3463a, type: 3}
   newSfxDestroy: {fileID: 8300000, guid: 16747251e42cd9a488a72c8ef3b7d377, type: 3}
   newDataEnemy: {fileID: 11400000, guid: 88c771b7b6c2ae84d92f87aff57cc4c7, type: 2}
   detach: 1
@@ -326,7 +325,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

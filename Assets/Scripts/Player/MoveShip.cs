@@ -13,12 +13,12 @@ public class MoveShip : MonoBehaviour
     [SerializeField] float minEnergyBurst;
     bool burst = false;
     Rigidbody2D body;
-    IBoundsChecker boundsChecker;
+    BoundPlayer bounds;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        boundsChecker = new ScreenBoundsChecker();
+        bounds = AdapterServiceLocator.Singlenton.GetBounds();
     }
 
     // Update is called once per frame
@@ -43,16 +43,15 @@ public class MoveShip : MonoBehaviour
         if (barEnergy.GetEnergy() < 100f)
         barEnergy.MoreEnergy();
 
-      /*  Vector3 newPosition = transform.position + new Vector3(0f, input.GetAxisY() * ship.speed * Time.deltaTime, 0f); ;
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(newPosition);
 
-        if (boundsChecker.IsWithinBounds(screenPosition))
-        { 
-          rb.velocity = Vector2.zero;
-          return;
-        }
-      */
+        Vector2 clampedPosition = new Vector2
+       (
+           Mathf.Clamp(transform.position.x, bounds.GetBoundX().x, bounds.GetBoundX().y),
+           Mathf.Clamp(transform.position.y, bounds.GetBoundY().x, bounds.GetBoundY().y)
+       );
 
+
+      transform.position = new Vector3(clampedPosition.x,clampedPosition.y, transform.position.z);
       if (input.GetAxisY() > 0f && speed < ship.speedBurstMax) 
       {
         if (!burst && speed < ship.speedMax)

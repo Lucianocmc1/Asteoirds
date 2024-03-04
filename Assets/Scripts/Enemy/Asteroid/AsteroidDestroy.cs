@@ -13,11 +13,11 @@ public class AsteroidDestroy : EnemyHealt, IDestroy,IEnemyInfo
     [SerializeField] bool detach;
     DetachAsteroid spawnAsteroid;
     IGetSystemParticle particleDestroy;
-    GetRefencie refence;
+    AdapterServiceLocator refence;
 
     void Start()
     {
-      refence = GetRefencie.Singlenton;
+      refence = AdapterServiceLocator.Singlenton;
       particleDestroy = refence.GetReferenceParticle(newDataEnemy.typeEnemy);
       var spriteEnemy = transform.GetChild(0);
 

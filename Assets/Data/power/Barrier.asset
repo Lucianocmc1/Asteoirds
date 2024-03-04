@@ -17,3 +17,4 @@ MonoBehaviour:
   timeMin: 0
   ammountUses: 3
   prefab: {fileID: 8117537576473602464, guid: 1c75fcabed818964499ad61950502a1e, type: 3}
+  typePower: 1

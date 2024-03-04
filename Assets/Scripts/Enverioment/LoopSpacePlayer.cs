@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LoopSpace : MonoBehaviour
+public class LoopSpacePlayer : MonoBehaviour , ILoopPlayer
 {
     [SerializeField] bool IsVertical;
     [SerializeField][Range(-5, 5)] float forceCenter;
+    [SerializeField] LayerMask layerPlayer;
 
-
-    void Impulse(Rigidbody2D body ,Vector2 direction ) { body.AddForce(direction * forceCenter); }
+    public bool GetVertical() { return IsVertical; }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (IsVertical)
+        if (IsVertical && layerPlayer == other.gameObject.layer)
         {
             float destinyPosition = -other.transform.position.y;
             destinyPosition = destinyPosition > 0f ? destinyPosition - forceCenter : destinyPosition + forceCenter;
             other.transform.position = new Vector2(other.transform.position.x, destinyPosition);
         }
-        else 
+        else if(IsVertical && layerPlayer == other.gameObject.layer) 
         {
             float destinyPosition = -other.transform.position.x;
             destinyPosition = destinyPosition > 0f ? destinyPosition - forceCenter : destinyPosition + forceCenter;
@@ -29,3 +29,8 @@ public class LoopSpace : MonoBehaviour
     
 }
   
+public interface ILoopPlayer 
+{
+    public bool GetVertical();
+
+}

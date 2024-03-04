@@ -12,7 +12,7 @@ public class PowerUP : MonoBehaviour , IPowerUP
    [SerializeField] DataPowerSO power;
    [SerializeField] DataPowerSO powerDefault;
    [SerializeField] TextMeshProUGUI txtAmountUses;
-   
+   TypePower typePower;
     int amountUses = 0;
     private void Start()=>  SetPower(powerDefault);
     void Update()
@@ -28,7 +28,9 @@ public class PowerUP : MonoBehaviour , IPowerUP
     void OnPower()
     {
       amountUses--;
-      Instantiate(power.prefab, transform.position,Quaternion.identity);
+      
+      Instantiate(power.prefab, transform.position, Quaternion.identity);
+       
       power.timeMin = power.timeMax;
     }
     public void PowerDefault()=> power = powerDefault;
@@ -39,6 +41,7 @@ public class PowerUP : MonoBehaviour , IPowerUP
      power.powerReset();
      iconPower.sprite = powerUP.iconPower;
      amountUses = powerUP.ammountUses;
+     typePower = powerUP.typePower;
     }
 
     void UpdateBarEnergy()

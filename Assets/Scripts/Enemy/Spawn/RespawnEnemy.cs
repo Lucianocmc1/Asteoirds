@@ -15,13 +15,13 @@ public class RespawnEnemy : MonoBehaviour
     [SerializeField] List<TypeEnemy> listPoolingToAdds;
     [SerializeField] List<GameObject> listPoolingInstancie;  // des Serializar
     [SerializeField] Transform[] pointSpawn;
-    private GetRefencie refencie;
+    private AdapterServiceLocator refencie;
     private static RespawnEnemy instance;
     public static RespawnEnemy Singlenton { get { return instance; } set { } }
 
     private void Start()
     {
-      refencie = GetRefencie.Singlenton;
+      refencie = AdapterServiceLocator.Singlenton;
       InvokeRepeating("RespawnEnemys", secondLastStart, UnityEngine.Random.Range(1f, spawnLastSeconds));
     }
  

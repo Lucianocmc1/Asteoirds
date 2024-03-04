@@ -5,4 +5,7 @@ using UnityEngine;
 public interface IHealtPlayer
 {
     public void MoreHealt();
+    public HealthShip Get();
+    public void OnDeath();
+    public Transform GetTransform();
 }
