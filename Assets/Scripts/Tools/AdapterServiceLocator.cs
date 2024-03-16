@@ -40,15 +40,16 @@ public class ServiceLocator
        }
         return (T)service;
     }
+    public void UnregisterAllServices()
+    {
+        _services.Clear();
+    }
 }
-
-
 
 [Serializable]
 public class AdapterServiceLocator : MonoBehaviour
 {
-    //[SerializeField] HealthShip healthShip;
-    [SerializeField] BoundPlayer boundPlayer;
+ 
     [SerializeField] DictionaryGenerics< TypeEnemy, GameObject> dictionaryPoolingEfects;   
     [SerializeField] DictionaryGenerics<TypeEnemy, GameObject> dictionaryPoolingInstance;
     [SerializeField] DetachAsteroid deatchAsteroid;
@@ -70,7 +71,6 @@ public class AdapterServiceLocator : MonoBehaviour
         poolingInstance = dictionaryPoolingInstance.ToDictionary();
     }
 
-
     public IGetSystemParticle GetReferenceParticle(TypeEnemy TypeEnemy) //where T : IGetSystemParticle
     {
         if (poolingEfects.ContainsKey(TypeEnemy))
@@ -90,15 +90,13 @@ public class AdapterServiceLocator : MonoBehaviour
 
         return null;
     }
-
-    public BoundPlayer GetBounds() => boundPlayer.GetBound();
     public DetachAsteroid GetDeatchAsteroid() { return deatchAsteroid;}
     public ShipReference GetShipReference() => ShipReference.Singlenton;
-   // public HealthShip GetHealthShip() => healthShip;
 
     public void RegisterService <T>( T service)=> serviceLocator.RegisterService(service);
     public T GetService<T>()=> serviceLocator.GetServices<T>();
-    
+    public void ClearAllService()=> serviceLocator.UnregisterAllServices();
+
 }
 
 //referencias pooling = gameObject;

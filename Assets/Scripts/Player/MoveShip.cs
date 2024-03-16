@@ -13,12 +13,12 @@ public class MoveShip : MonoBehaviour
     [SerializeField] float minEnergyBurst;
     bool burst = false;
     Rigidbody2D body;
-    BoundPlayer bounds;
+    IBoundPlayer bounds;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        bounds = AdapterServiceLocator.Singlenton.GetBounds();
+        bounds = AdapterServiceLocator.Singlenton.GetService<IBoundPlayer>();
     }
 
     // Update is called once per frame
@@ -66,7 +66,14 @@ public class MoveShip : MonoBehaviour
       }
 
     }
-    void Rotate() => transform.Rotate(0f, 0f, -input.GetAxisX() * player.speedRotate * Time.deltaTime);
+    // void Rotate() => transform.Rotate(0f, 0f, -input.GetAxisX() * player.speedRotate * Time.deltaTime);
+    void Rotate() 
+    {
+        var target = input.PositionMouseWorld();
+        float angleRadianes = Mathf.Atan2( target.y - transform.position.y , target.x - transform.position.x);
+        float angleGrade = (180 /  Mathf.PI) * angleRadianes - 90; // le resto la rotacion inicial
+        transform.rotation = Quaternion.Euler(0f, 0f, angleGrade);
+    }
 
     bool SufficientPower() => barEnergy.GetEnergy() > minEnergyBurst; 
 }

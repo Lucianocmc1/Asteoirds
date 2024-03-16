@@ -3,49 +3,35 @@ using UnityEngine;
 
 public class BulletPooling : MonoBehaviour , IBulletPooling
 {
-    [SerializeField] private GameObject LaserPrefab;
+    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int poolSize = 10;
-    [SerializeField] private List<GameObject> laserList;
-
-    private static BulletPooling instance;
-    public static BulletPooling Instance{ get { return  instance; } }   // lo podremos llammar desde otros scripts
-     
-    private void Awake() //por si es llamdado mas de una ves no me va a duplicar la lista de pooling me elimina una
-    {
-        if (instance == null)
-        {
-            instance = this; 
-        }
-        else
-        {
-            Destroy(gameObject);
-        }  
-    }
-    private void AddLasersToPool(int amount)
+    [SerializeField] private List<GameObject> bulletList;
+  
+    private void AddBulletToPool(int amount)
     {
         for (int i = 0; i < amount; i++)
         {
-            var laser = Instantiate(LaserPrefab); //instancia laser
-            laser.gameObject.SetActive(false); // lo desactiva no lo elimina
-            laserList.Add(laser); //lo añade a la lista
-            laser.transform.parent = transform; // vincula los disparos al transform del que tiene el script
+            var bullet = Instantiate(bulletPrefab); //instancia laser
+            bullet.gameObject.SetActive(false); // lo desactiva no lo elimina
+            bulletList.Add(bullet); //lo añade a la lista
+            bullet.transform.parent = transform; // vincula los disparos al transform del que tiene el script
         }
     }
-    void Start() => AddLasersToPool(poolSize);
+    void Start() => AddBulletToPool(poolSize);
 
     public GameObject RequestLaser()
     {
-        for (int i = 0; i < laserList.Count; i++)
+        for (int i = 0; i < bulletList.Count; i++)
         {
-           if (!laserList[i].gameObject.activeSelf) 
+           if (!bulletList[i].gameObject.activeSelf) 
             { 
-              laserList[i].gameObject.SetActive(true);
-              return laserList[i];
+              bulletList[i].gameObject.SetActive(true);
+              return bulletList[i];
             }
         }
-        AddLasersToPool(1);
-        laserList[ laserList.Count - 1 ].gameObject.SetActive(true); //añade 1 laser de hacer falta a la lista y lo coloca en lo ultimo
-        return laserList[laserList.Count - 1]; //me lo retorna el ultimo creado
+        AddBulletToPool(1);
+        bulletList[ bulletList.Count - 1 ].gameObject.SetActive(true); //añade 1 laser de hacer falta a la lista y lo coloca en lo ultimo
+        return bulletList[bulletList.Count - 1]; //me lo retorna el ultimo creado
     }
 
     public GameObject GetBullet()=> RequestLaser();

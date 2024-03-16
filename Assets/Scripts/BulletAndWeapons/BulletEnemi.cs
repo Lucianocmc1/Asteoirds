@@ -25,19 +25,16 @@ public class BulletEnemi : MonoBehaviour, IDestroy
         bool player = other.gameObject.layer == LayerMask.NameToLayer("Player");
         if (player)
         {
+           other.gameObject.GetComponent<IDestroy>()?.OnDestroyed(true);
            gameObject.SetActive(false);
-           other.gameObject.GetComponent<HealthShip>().OnDestroyed(true);
         }
         else
-        { 
-           gameObject.SetActive(false);
+        {
+            Destroyed();
         }
 
     }
-    private void Destroyed()
-    {
-        gameObject.SetActive(false);
-    }
+    void Destroyed()=> gameObject.SetActive(false);
 
     public void OnDestroyed(bool forPlayer) => Destroyed();
 }

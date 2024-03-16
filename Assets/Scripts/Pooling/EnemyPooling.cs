@@ -2,28 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OvniPooling : MonoBehaviour , IPoolingEnemy
+public class EnemyPooling : MonoBehaviour , IPoolingEnemy
 {
 
     [SerializeField] private GameObject ovniPrefab;
     [SerializeField] private int poolSize = 10;
     [SerializeField] private List<GameObject> ovniList;
 
-  //  private static OvniPooling instance;
-//    public static OvniPooling Instance { get { return instance; } }   // lo podremos llammar desde otros scripts
-
-    private void Awake() //por si es llamdado mas de una ves no me va a duplicar la lista de pooling me elimina una
-    {
-       
-    }
-
 
     void Start()
     {
-        AddOvniToPool(poolSize);
+        AddEnemyToPool(poolSize);
     }
 
-    private void AddOvniToPool(int amount)
+    private void AddEnemyToPool(int amount)
     {
         for (int i = 0; i < amount; i++)
         {
@@ -35,7 +27,7 @@ public class OvniPooling : MonoBehaviour , IPoolingEnemy
         }
     }
 
-    public GameObject RequestOvni()
+    public GameObject RequestEnemi()
     {
         for (int i = 0; i < ovniList.Count; i++)
         {
@@ -46,10 +38,10 @@ public class OvniPooling : MonoBehaviour , IPoolingEnemy
             }
 
         }
-        AddOvniToPool(1);
+        AddEnemyToPool(1);
         ovniList[ovniList.Count - 1].gameObject.SetActive(true); 
         return ovniList[ovniList.Count - 1]; 
     }
     
-   public GameObject RequestEnemy() => RequestOvni();
+   public GameObject RequestEnemy() => RequestEnemi();
 }

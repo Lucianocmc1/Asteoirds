@@ -4,30 +4,28 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
+public class HealthShip : MonoBehaviour, IDestroy, IHealtPlayer
 {
     [SerializeField] Transform positionTemplate;
     [SerializeField] GameObject templeateHealt;
-    [SerializeField , Min(1)] int healtInitial;
+    [SerializeField, Min(1)] int healtInitial;
     [SerializeField] float offSet;
     [SerializeField] LayerMask layerEnemy;
     [SerializeField] LayerMask layerBulletEnemy;
     [SerializeField] BarrierPower barrier;
-    readonly Transform _transform; 
     int index = 0;
-    Rigidbody2D body;
+    [SerializeField] Rigidbody2D body;
     public UnityEvent OnPlayerDeath;
     public HealthShip Instance { get { return this; } private set { } }
-    void Awake() 
+    void Awake()
     {
         var adapterServiceLocator = AdapterServiceLocator.Singlenton;
-        adapterServiceLocator.RegisterService<IHealtPlayer>(this);
+        adapterServiceLocator.RegisterService<IHealtPlayer>(Instance);
     }
-    void Start()
+    void OnEnable()
     {
-       body = GetComponent<Rigidbody2D>();
-       for (int i = healtInitial; i >= 1; i--)
-       InstanceHealt(); 
+        for (int i = healtInitial; i >= 1; i--)
+        InstanceHealt();
     }
     void InstanceHealt()
     {
@@ -47,18 +45,18 @@ public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
 
     void Destroy()
     {
-        if( index > 1)
-        { 
-         LowHealt();
-         Respawn();
-         InstanceBarrier();
-         return;
-        }
-        else
-        {
-         OnPlayerDeath.Invoke();
-         gameObject.SetActive(false);
-        }
+      if( index > 1)
+      { 
+        LowHealt();
+        Respawn();
+        InstanceBarrier();
+        return;
+      }
+      else
+      {
+        OnPlayerDeath.Invoke();
+        gameObject.SetActive(false);
+      }
         
     }
     void Respawn() 
@@ -75,6 +73,5 @@ public class HealthShip : MonoBehaviour, IDestroy , IHealtPlayer
     public void OnDeath() => InstanceBarrier();
     void InstanceBarrier()=> barrier.gameObject.SetActive(true);
     public HealthShip Get() => Instance;
-
     public Transform GetTransform() => transform;
 }

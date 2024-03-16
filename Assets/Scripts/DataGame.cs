@@ -43,7 +43,9 @@ public class DataGame : MonoBehaviour
     public void SendName()
     {
       inputName.interactable = false;
+      inputName.gameObject.SetActive(false);
       textScore.enabled = false;
+      active = false;
       if( inputName.text.Length <= 6 && inputName.text.Length >= 1)
       {
         RegisterScore(ScoreManager.Instance.GetScore(), inputName.text);
@@ -65,7 +67,6 @@ public class DataGame : MonoBehaviour
         {
           if (playerList[i].Value < score)
           {
-           //if (!playerList.Exists(pair => pair.Key == namePlayer))
            playerList[i] = new KeyValuePair<string, int>(namePlayer, score);
            break;
           }

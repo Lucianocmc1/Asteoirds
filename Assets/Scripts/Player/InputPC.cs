@@ -21,6 +21,12 @@ public class InputPC : MonoBehaviour
     public float OnBurst() { return Input.GetAxis(burst); }
     public Vector2 GetDirection() { return new Vector2(GetAxisX(), GetAxisY()); }
     public bool GetEnter()=> Input.GetKeyDown(enter);
-
+    public Vector3 PositionMouseWorld()=> Camera.main.ScreenToWorldPoint(Input.mousePosition) ;
+    public float AngleRespectMouse(float angleInitial) 
+    {
+        var target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float angleRadianes = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x);
+        return (180 / Mathf.PI) * angleRadianes - angleInitial; // le resto la rotacion inicial
+    }
     //   void RotateShip()
 }

@@ -1,6 +1,11 @@
 using UnityEngine;
 
-public class BoundPlayer : MonoBehaviour
+public interface IBoundPlayer 
+{
+   public Vector3 GetBoundX(); 
+   public Vector3 GetBoundY(); 
+}
+public class BoundPlayer : MonoBehaviour , IBoundPlayer
 {
     [SerializeField] Transform colliderVertical;
     [SerializeField] Transform colliderHorizontal;
@@ -14,7 +19,7 @@ public class BoundPlayer : MonoBehaviour
         boxCollider = gameObject.AddComponent<BoxCollider2D>();
         SetBounds();
     }
-
+    void Start () => AdapterServiceLocator.Singlenton.RegisterService<IBoundPlayer>(this);
     private void SetBounds()
     {
         boxCollider.size = new Vector2(Camera.main.aspect * 2f * Camera.main.orthographicSize, 2f * Camera.main.orthographicSize);
@@ -26,7 +31,7 @@ public class BoundPlayer : MonoBehaviour
         boxCollider.enabled = false;
     }
     
-    public BoundPlayer GetBound()=> this;
+    //public BoundPlayer GetBound()=> this;
     public Vector3 GetBoundX()=>new  Vector3(minX, maxX);
     public Vector3 GetBoundY()=> new Vector3(minY, maxY);
  }

@@ -22,7 +22,6 @@ public class LoopSpaceEnemy : MonoBehaviour
             destinyPosition = destinyPosition > 0f ? destinyPosition - forceCenter : destinyPosition + forceCenter;
             other.transform.position = new Vector2(destinyPosition, other.transform.position.y);
         }
-
     }
     
 }

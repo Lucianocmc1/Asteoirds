@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.WebSockets;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
@@ -21,7 +22,8 @@ public class WeaponController : MonoBehaviour
     private void Update()=> ManagerFire();
     private void ManagerFire()
     {
-        if ( input.OnFire() > 0f && CanShoot()) ShootFire();
+        if ( input.OnFire() > 0f && CanShoot())
+        ShootFire();
     }
     private bool CanShoot() => (Time.time > waitTime);
     private void ShootFire()
@@ -31,5 +33,6 @@ public class WeaponController : MonoBehaviour
         audio.PlayOneShot(sfxShoot);
         waitTime = Time.time + weapon.cadenceShoot;
     }
+
     public void SetBulletPoolig(BulletPooling bullet) => bulletPooling = bullet; 
 }
