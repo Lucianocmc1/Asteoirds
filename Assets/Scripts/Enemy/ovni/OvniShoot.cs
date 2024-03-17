@@ -5,20 +5,18 @@ using UnityEngine;
 public class OvniShoot : MonoBehaviour
 {
     Rigidbody2D rb;
-    [SerializeField] Transform target;
     [SerializeField,Range(0, 10)] float intervalShoot;
     [SerializeField,Range(0, 10)] float lastShoot;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private AudioClip sfxEnemyShoot;
+    [SerializeField] Transform target;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         RandomShootFire();
+        target = AdapterServiceLocator.Singlenton.GetService<IShip>().GetTransform();
     }
-    private void Start()
-    {
-        target = ShipReference.Singlenton.transform;
-    }
+    
     private void RandomShootFire() { lastShoot += Random.Range(0f, 5f); }
     private void Shooting()
     {
@@ -35,9 +33,7 @@ public class OvniShoot : MonoBehaviour
     }
     Vector2 ShootTo() => target.position - transform.position;
     // Update is called once per frame
-    void Update()
-    {
-        Shoot();
-    }
+    void Update()=> Shoot();
+  
 }
 

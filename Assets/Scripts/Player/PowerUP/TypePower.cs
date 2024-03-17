@@ -1,1 +1,1 @@
-public enum TypePower { instancePower,activePower}
+public enum TypePower { bombEnergy,barrier, suicide }

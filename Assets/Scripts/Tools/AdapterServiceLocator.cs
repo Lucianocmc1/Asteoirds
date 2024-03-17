@@ -2,6 +2,7 @@ using Mono.Cecil;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -50,9 +51,12 @@ public class ServiceLocator
 public class AdapterServiceLocator : MonoBehaviour
 {
  
+    [SerializeField] DictionaryGenerics< TypeEnemy, AudioClip> dictionaryPoolingAudio;   
     [SerializeField] DictionaryGenerics< TypeEnemy, GameObject> dictionaryPoolingEfects;   
     [SerializeField] DictionaryGenerics<TypeEnemy, GameObject> dictionaryPoolingInstance;
     [SerializeField] DetachAsteroid deatchAsteroid;
+    [SerializeField] GameObject poolingAudio;
+    Dictionary<TypeEnemy, AudioClip> poolingAudioClip;
     Dictionary<TypeEnemy, GameObject> poolingEfects;
     Dictionary<TypeEnemy, GameObject> poolingInstance;
     ServiceLocator serviceLocator;
@@ -65,23 +69,32 @@ public class AdapterServiceLocator : MonoBehaviour
          instance = this;
         else
          Destroy(gameObject);
-
         serviceLocator = ServiceLocator.Instance;
         poolingEfects = dictionaryPoolingEfects.ToDictionary();
+        poolingAudioClip = dictionaryPoolingAudio.ToDictionary();   
         poolingInstance = dictionaryPoolingInstance.ToDictionary();
     }
 
-    public IGetSystemParticle GetReferenceParticle(TypeEnemy TypeEnemy) //where T : IGetSystemParticle
+    public void PlayAudioDestroy(AudioClip audio, TypeEnemy typeEnemy) 
     {
-        if (poolingEfects.ContainsKey(TypeEnemy))
-         return poolingEfects[TypeEnemy].GetComponent<IGetSystemParticle>();
+        if (poolingAudioClip.ContainsKey(typeEnemy))
+        poolingAudio.GetComponent<IPoolingAudioSource>().GetAudio().PlayOneShot(poolingAudioClip[typeEnemy]);
+        else
+        Debug.Log("no encontro referencia del audio del enemigo");
+
+    } 
+
+    public IGetSystemParticle GetPoolingParticle(TypeEnemy typeEnemy) //where T : IGetSystemParticle
+    {
+        if (poolingEfects.ContainsKey(typeEnemy))
+         return poolingEfects[typeEnemy].GetComponent<IGetSystemParticle>();
         else
          Debug.Log("no encontro referencia de la Pooling de particulas");
 
         return null;
     }
 
-    public GameObject GetReferencePoolingInstancie(TypeEnemy typeEnemy) //where T : IGetSystemParticle // va a devolver la referencia del gameObject pooling
+    public GameObject GetPoolingEnemyInstancie(TypeEnemy typeEnemy) //where T : IGetSystemParticle // va a devolver la referencia del gameObject pooling
     {
         if (poolingInstance.ContainsKey(typeEnemy))
             return poolingInstance[typeEnemy];
@@ -91,8 +104,6 @@ public class AdapterServiceLocator : MonoBehaviour
         return null;
     }
     public DetachAsteroid GetDeatchAsteroid() { return deatchAsteroid;}
-    public ShipReference GetShipReference() => ShipReference.Singlenton;
-
     public void RegisterService <T>( T service)=> serviceLocator.RegisterService(service);
     public T GetService<T>()=> serviceLocator.GetServices<T>();
     public void ClearAllService()=> serviceLocator.UnregisterAllServices();

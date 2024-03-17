@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
 
+
 [RequireComponent(typeof(Rigidbody2D))]
-public class MoveShip : MonoBehaviour
+public class MoveShip : MonoBehaviour , IShip
 {
     [SerializeField] InputPC input;
     [SerializeField] GameObject spriteFire;
@@ -14,14 +15,18 @@ public class MoveShip : MonoBehaviour
     bool burst = false;
     Rigidbody2D body;
     IBoundPlayer bounds;
-
+    public Transform _Transform { get { return transform; } private set { } }
+    private void Awake()
+    {
+        AdapterServiceLocator.Singlenton.RegisterService<IShip>(this);
+    }
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         bounds = AdapterServiceLocator.Singlenton.GetService<IBoundPlayer>();
     }
 
-    // Update is called once per frame
+    public Transform GetTransform() => _Transform;
     void Update()
     {
         Rotate();

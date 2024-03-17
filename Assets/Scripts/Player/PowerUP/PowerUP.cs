@@ -12,6 +12,7 @@ public class PowerUP : MonoBehaviour , IPowerUP
    [SerializeField] DataPowerSO power;
    [SerializeField] DataPowerSO powerDefault;
    [SerializeField] TextMeshProUGUI txtAmountUses;
+   GameObject lastPrefabPower;
    TypePower typePower;
     int amountUses = 0;
     private void Start()=>  SetPower(powerDefault);
@@ -28,9 +29,8 @@ public class PowerUP : MonoBehaviour , IPowerUP
     void OnPower()
     {
       amountUses--;
-      
-      Instantiate(power.prefab, transform.position, Quaternion.identity);
-       
+      if (lastPrefabPower is not null) Destroy(lastPrefabPower.gameObject);
+      lastPrefabPower = Instantiate(power.prefab, transform.position, Quaternion.identity);
       power.timeMin = power.timeMax;
     }
     public void PowerDefault()=> power = powerDefault;

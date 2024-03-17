@@ -62,7 +62,7 @@ public class RespawnEnemy : MonoBehaviour
     {
       var lastpoolingEnemy = listPoolingToAdds.Count - 1;
       var poolEnemy = listPoolingToAdds[lastpoolingEnemy]; // este me va a dar el ultimo enum añadido 
-      var referenciePool = refencie.GetReferencePoolingInstancie(poolEnemy);
+      var referenciePool = refencie.GetPoolingEnemyInstancie(poolEnemy);
       listPoolingInstancie.Add(referenciePool);
       listPoolingToAdds.Remove(poolEnemy);
     }

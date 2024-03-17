@@ -7,20 +7,6 @@ public class BulletEnemiPooling : MonoBehaviour , IBulletPooling
     [SerializeField] private int poolSize = 10;
     [SerializeField] private List<GameObject> laserList;
 
-    private static BulletEnemiPooling instance;
-    public static BulletEnemiPooling Instance{ get { return  instance; } }   // lo podremos llammar desde otros scripts
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this; 
-        }
-        else
-        {
-            Destroy(gameObject);
-        }  
-    }
     void Start()=> AddLasersToPool(poolSize);
 
     private void AddLasersToPool(int amount) 

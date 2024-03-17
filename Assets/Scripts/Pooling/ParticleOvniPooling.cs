@@ -8,21 +8,6 @@ public class ParticleOvniPooling : MonoBehaviour, IGetSystemParticle
     [SerializeField] private int poolSize = 10;
     [SerializeField] private List<ParticleSystem> fvxList;
 
-    private static ParticleOvniPooling instance;
-    public static ParticleOvniPooling Instance { get { return instance; } }   // lo podremos llammar desde otros scripts
-
-    private void Awake() //por si es llamdado mas de una ves no me va a duplicar la lista de pooling me elimina una
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     void Start()
     {
         AddFVXToPool(poolSize);

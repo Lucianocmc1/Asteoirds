@@ -14,8 +14,8 @@ public class DetachAsteroid : MonoBehaviour
     public void Death(Vector3 position, EnemySO enemy)
     {
         GameObject asteroid;
-        var asteroidMedium = serviceLocator.GetReferencePoolingInstancie(TypeEnemy.asteroidMedium);
-        var asteroidSmall = serviceLocator.GetReferencePoolingInstancie(TypeEnemy.asteroidSmall);
+        var asteroidMedium = serviceLocator.GetPoolingEnemyInstancie(TypeEnemy.asteroidMedium);
+        var asteroidSmall = serviceLocator.GetPoolingEnemyInstancie(TypeEnemy.asteroidSmall);
         for (int i = ammountAsteroid;  i > 0; i--)
         {
          asteroid = (enemy.typeEnemy == TypeEnemy.asteroidBig)? asteroidMedium : asteroidSmall;

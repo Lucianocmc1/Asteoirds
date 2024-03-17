@@ -4,26 +4,9 @@ using UnityEngine;
 
 public class ParticleAsteroidPooling : MonoBehaviour, IGetSystemParticle
 {
-
     [SerializeField] private ParticleSystem prefabParticle;
     [SerializeField] private int poolSize = 10;
     [SerializeField] private List<ParticleSystem> fvxList;
-
-    private static ParticleAsteroidPooling instance;
-    public static ParticleAsteroidPooling Instance { get { return instance; } }   // lo podremos llammar desde otros scripts
-
-    private void Awake() //por si es llamdado mas de una ves no me va a duplicar la lista de pooling me elimina una
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
 
     void Start()
     {

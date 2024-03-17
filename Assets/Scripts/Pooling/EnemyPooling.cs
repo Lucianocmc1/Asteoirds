@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class EnemyPooling : MonoBehaviour , IPoolingEnemy
 {
-
     [SerializeField] private GameObject ovniPrefab;
     [SerializeField] private int poolSize = 10;
     [SerializeField] private List<GameObject> ovniList;
 
-
-    void Start()
-    {
-        AddEnemyToPool(poolSize);
-    }
+    void Start()=> AddEnemyToPool(poolSize);
 
     private void AddEnemyToPool(int amount)
     {

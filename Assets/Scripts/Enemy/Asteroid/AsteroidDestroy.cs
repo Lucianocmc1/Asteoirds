@@ -18,11 +18,10 @@ public class AsteroidDestroy : EnemyHealt, IDestroy,IEnemyInfo
     void Start()
     {
       refence = AdapterServiceLocator.Singlenton;
-      particleDestroy = refence.GetReferenceParticle(newDataEnemy.typeEnemy);
+      particleDestroy = refence.GetPoolingParticle(newDataEnemy.typeEnemy);
       var spriteEnemy = transform.GetChild(0);
 
       InitData(newDataEnemy, particleDestroy, spriteEnemy.GetComponent<SpriteRenderer>());
-      InitAudio(GetComponent<AudioSource>(), newSfxDestroy);
       if (detach) spawnAsteroid = refence.GetDeatchAsteroid();
     }
     public void OnDisable() {   if (spawnAsteroid != null) spawnAsteroid.Death(transform.position, newDataEnemy);}

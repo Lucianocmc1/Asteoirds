@@ -3,30 +3,32 @@ using System;
 using UnityEngine;
 using System.Threading.Tasks;
 
-public class EnemyHealt: MonoBehaviour
+public class EnemyHealt : MonoBehaviour
 {
     protected EnemySO dataEnemy;
     protected IGetSystemParticle particleDestroyed;
     protected AudioClip audioDestroyed;
     protected SpriteRenderer spriteRenderer;
-    protected AudioSource audioSource;
     protected void OnCollisionEnter2D(Collision2D other)
     {
-        bool player = ((other.gameObject.layer == LayerMask.NameToLayer("Player")) || other.gameObject.layer == LayerMask.NameToLayer("BulletPlayer") || other.gameObject.layer == LayerMask.NameToLayer("Collision Enemy and Bullet") );
+        bool player = ((other.gameObject.layer == LayerMask.NameToLayer("Player")) || other.gameObject.layer == LayerMask.NameToLayer("BulletPlayer") || other.gameObject.layer == LayerMask.NameToLayer("Collision Enemy and Bullet"));
         if (player)
-        Destroyed(true);
+            Destroyed(true);
     }
     protected void Destroyed(bool forPlayer)
     {
         if (forPlayer)
-        DestroyedForPlayer();
+            DestroyedForPlayer();
         else
         {
-          InstanceParticleDestroy();
-          this.gameObject.SetActive(false);
+            InstanceParticleDestroy();
+            PlayAudioDestroy();
+            this.gameObject.SetActive(false);
         }
     }
 
+    protected void PlayAudioDestroy()=>  AdapterServiceLocator.Singlenton.PlayAudioDestroy(dataEnemy.soundDestroy, dataEnemy.typeEnemy);
+    
     protected void InstanceParticleDestroy()
     {
       if (particleDestroyed is null) return;
@@ -37,7 +39,7 @@ public class EnemyHealt: MonoBehaviour
     {
       await DoFlash();
       ScoreManager.Instance.SetScore(dataEnemy.typeEnemy);
-      audioSource.PlayOneShot(audioDestroyed);
+      PlayAudioDestroy();
       DropPowerUP();
       InstanceParticleDestroy();
       this.gameObject.SetActive(false);
@@ -57,11 +59,7 @@ public class EnemyHealt: MonoBehaviour
      particleDestroyed = fvxDestroyed;
      spriteRenderer = spriteRender;
     }
-    protected virtual void InitAudio(AudioSource audioSource , AudioClip audioClipDestroy)
-    {
-     this.audioSource = audioSource;  
-     audioDestroyed = audioClipDestroy;
-    }
+   
     protected void DropPowerUP( )=> SpawnPowerUP.Singlenton.InstantiatePowerUP(transform.position, dataEnemy.typeEnemy);
 
 }
