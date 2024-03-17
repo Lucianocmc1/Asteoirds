@@ -20,7 +20,8 @@ public class OvniShoot : MonoBehaviour
     private void RandomShootFire() { lastShoot += Random.Range(0f, 5f); }
     private void Shooting()
     {
-        GameObject bullet = BulletEnemiPooling.Instance.RequestTO(transform.position);
+        GameObject bullet = AdapterServiceLocator.Singlenton.GetService<IBulletPooling>().GetBullet();
+        bullet.transform.position = transform.position;
         BulletEnemi componentBullet = bullet.GetComponent<BulletEnemi>();
         componentBullet?.Shoot(transform.position, bulletSpeed + rb.velocity.magnitude, ShootTo());//accedo al pooling de los disparos
         GetComponent<AudioSource>().PlayOneShot(this.sfxEnemyShoot);

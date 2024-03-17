@@ -81,7 +81,6 @@ public class AdapterServiceLocator : MonoBehaviour
         poolingAudio.GetComponent<IPoolingAudioSource>().GetAudio().PlayOneShot(poolingAudioClip[typeEnemy]);
         else
         Debug.Log("no encontro referencia del audio del enemigo");
-
     } 
 
     public IGetSystemParticle GetPoolingParticle(TypeEnemy typeEnemy) //where T : IGetSystemParticle
@@ -103,7 +102,7 @@ public class AdapterServiceLocator : MonoBehaviour
 
         return null;
     }
-    public DetachAsteroid GetDeatchAsteroid() { return deatchAsteroid;}
+    public DetachAsteroid GetDeatchAsteroid() { return deatchAsteroid;} //podria cambiarlo y registrarlo en el getservice
     public void RegisterService <T>( T service)=> serviceLocator.RegisterService(service);
     public T GetService<T>()=> serviceLocator.GetServices<T>();
     public void ClearAllService()=> serviceLocator.UnregisterAllServices();

@@ -33,14 +33,16 @@ public class HealthShip : MonoBehaviour, IDestroy, IHealtPlayer
         health.SetActive(true);
         RectTransform healthRectTransform = health.GetComponent<RectTransform>();
         healthRectTransform.anchoredPosition = new Vector2 (positionTemplate.position.x + index * offSet, positionTemplate.position.y);
-        HealtShipUI.Instance.AddHealt(health, index);
+        var healtUI = AdapterServiceLocator.Singlenton.GetService<IHealtUI>(); 
+        healtUI.AddHealt(health, index);
         index++;
     }
     public void MoreHealt()=> InstanceHealt();
     void LowHealt() 
     {
         index--;
-        HealtShipUI.Instance.LostHealt(index);
+        var healtUI = AdapterServiceLocator.Singlenton.GetService<IHealtUI>();
+        healtUI.LostHealt(index);
     }
 
     void Destroy()

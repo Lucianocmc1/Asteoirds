@@ -6,8 +6,11 @@ public class BulletEnemiPooling : MonoBehaviour , IBulletPooling
     [SerializeField] private GameObject LaserPrefab;
     [SerializeField] private int poolSize = 10;
     [SerializeField] private List<GameObject> laserList;
-
-    void Start()=> AddLasersToPool(poolSize);
+    void Start()
+    {
+        AdapterServiceLocator.Singlenton.RegisterService<IBulletPooling>(this);
+        AddLasersToPool(poolSize);
+    }
 
     private void AddLasersToPool(int amount) 
     {
@@ -36,7 +39,7 @@ public class BulletEnemiPooling : MonoBehaviour , IBulletPooling
         return laserList[laserList.Count - 1]; //me lo retorna el ultimo creado
     }
 
-    public GameObject RequestTO( Vector3 destiny)
+    public GameObject RequestBullet( Vector3 destiny)
     {
         for (int i = 0; i < laserList.Count; i++)
         {

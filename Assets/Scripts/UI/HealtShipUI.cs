@@ -3,29 +3,30 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class HealtShipUI : MonoBehaviour
+public class HealtShipUI : MonoBehaviour, IHealtUI
 {
     private Dictionary<int, GameObject> healths;
 
-    private static HealtShipUI instance;
-    public static HealtShipUI Instance
+   // private static HealtShipUI instance;
+   /* public static HealtShipUI Instance
     { 
         get{return instance;} private set { }
-    }
+    }*/
 
     void Awake()
     {
-        if (instance == null)
+     /*if (instance == null)
          instance = this;
-        else
+       else
          Destroy(gameObject);
-        
-        healths = new Dictionary<int, GameObject>();
+     */
+      AdapterServiceLocator.Singlenton.RegisterService<IHealtUI>(this);
+      healths = new Dictionary<int, GameObject>();
     }
-    public void AddHealt(GameObject health, int index) => healths.Add( index, health);
+    public void AddHealt(GameObject healthPrefab, int index) => healths.Add( index, healthPrefab);
     public void LostHealt(int lastIndex) 
     {
-        Destroy(healths[lastIndex]);
-        healths.Remove(lastIndex);
+      Destroy(healths[lastIndex]);
+      healths.Remove(lastIndex);
     }
 }
