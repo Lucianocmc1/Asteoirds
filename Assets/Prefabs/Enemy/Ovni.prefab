@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: 5251733987600495291}
   - component: {fileID: 9113080342806900383}
   - component: {fileID: -5229176662028678189}
-  - component: {fileID: 4526770436857882631}
   m_Layer: 7
   m_Name: Ovni
   m_TagString: Untagged
@@ -290,7 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78cc66c88a8cb428e988f0f6a8704a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxDestroy: {fileID: 8300000, guid: 16747251e42cd9a488a72c8ef3b7d377, type: 3}
   newDataEnemy: {fileID: 11400000, guid: de4c503636340a54bac6c00f369e24ce, type: 2}
   lifeAmmount: 1
 --- !u!114 &9113080342806900383
@@ -318,21 +316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd3bdb139998f848a828f3035f3571a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  dataEnemy: {fileID: 11400000, guid: de4c503636340a54bac6c00f369e24ce, type: 2}
+  rb: {fileID: 7244956202918404322}
   intervalShoot: 4.35
   lastShoot: 0
   bulletSpeed: 5
   sfxEnemyShoot: {fileID: 8300000, guid: c9780c58848f8484794537681023a48a, type: 3}
---- !u!114 &4526770436857882631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7244956202918404321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee55a7acceab024ca79abce1be6cf66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dataEnemy: {fileID: 11400000, guid: de4c503636340a54bac6c00f369e24ce, type: 2}
+  audioSource: {fileID: 5032945595476783156}

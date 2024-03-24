@@ -11,14 +11,14 @@ namespace Enemy
     [SerializeField] int lifeAmmount;
     IGetSystemParticle particleDestroy;
     GameObject poolingInstance;
-    AdapterServiceLocator refence;
+    AdapterServiceLocator ServerLocator;
     
-    void Start() 
+    void Awake() 
     {
-      refence = AdapterServiceLocator.Singlenton;
-      particleDestroy = refence.GetPoolingParticle(newDataEnemy.typeEnemy);
+      ServerLocator = AdapterServiceLocator.Singlenton;
+      particleDestroy = ServerLocator.GetPoolingParticle(newDataEnemy.typeEnemy);
       var spriteEnemy = transform.GetChild(0);
-
+        
       InitData(newDataEnemy, particleDestroy, spriteEnemy.GetComponent<SpriteRenderer>() );
     } 
     void LowHealt(bool forPlayer)

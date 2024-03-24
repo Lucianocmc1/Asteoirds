@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BulletEnemi : MonoBehaviour, IDestroy
+public class BulletEnemi : MonoBehaviour, IDestroy, IBulletBeheviour
 {
     private Vector2 direction;
     public void Shoot(Vector2 from, float speed, Vector2 playerPosition)

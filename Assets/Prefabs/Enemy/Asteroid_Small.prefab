@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 6277796643511388987}
   - component: {fileID: 2756462003454010969}
   - component: {fileID: -7853138623281400682}
-  - component: {fileID: 1401656462477365049}
   m_Layer: 7
   m_Name: Asteroid_Small
   m_TagString: Untagged
@@ -325,16 +324,3 @@ MonoBehaviour:
   newSfxDestroy: {fileID: 8300000, guid: 16747251e42cd9a488a72c8ef3b7d377, type: 3}
   newDataEnemy: {fileID: 11400000, guid: 4a5969a95c3ac2b4d8e71ee55ad5688b, type: 2}
   detach: 0
---- !u!114 &1401656462477365049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8834802829497987584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee55a7acceab024ca79abce1be6cf66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dataEnemy: {fileID: 11400000, guid: 4a5969a95c3ac2b4d8e71ee55ad5688b, type: 2}

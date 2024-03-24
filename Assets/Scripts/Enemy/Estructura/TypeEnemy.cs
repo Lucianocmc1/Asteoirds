@@ -5,4 +5,5 @@ public enum TypeEnemy
     asteroidMedium,
     asteroidSmall,
     ovni,
+    boss
 }

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: -4886863004451973723}
   - component: {fileID: 9075085562879675261}
   - component: {fileID: 4085120599518509270}
-  - component: {fileID: 8058930037570837119}
   m_Layer: 7
   m_Name: Asteroid_Medium
   m_TagString: Untagged
@@ -227,19 +226,6 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 831da52e1618b5f4cb7864a62516a3d9, type: 2}
   rotateMin: 30
   rotateMax: 60
---- !u!114 &8058930037570837119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4897642804854926383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee55a7acceab024ca79abce1be6cf66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dataEnemy: {fileID: 11400000, guid: 831da52e1618b5f4cb7864a62516a3d9, type: 2}
 --- !u!1 &4897642806148889002
 GameObject:
   m_ObjectHideFlags: 0

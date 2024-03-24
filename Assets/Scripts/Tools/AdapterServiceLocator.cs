@@ -54,11 +54,13 @@ public class AdapterServiceLocator : MonoBehaviour
     [SerializeField] DictionaryGenerics< TypeEnemy, AudioClip> dictionaryPoolingAudio;   
     [SerializeField] DictionaryGenerics< TypeEnemy, GameObject> dictionaryPoolingEfects;   
     [SerializeField] DictionaryGenerics<TypeEnemy, GameObject> dictionaryPoolingInstance;
+    [SerializeField] DictionaryGenerics<TypeEnemy, GameObject> dictionaryPoolingBullet;
     [SerializeField] DetachAsteroid deatchAsteroid;
     [SerializeField] GameObject poolingAudio;
     Dictionary<TypeEnemy, AudioClip> poolingAudioClip;
     Dictionary<TypeEnemy, GameObject> poolingEfects;
     Dictionary<TypeEnemy, GameObject> poolingInstance;
+    Dictionary<TypeEnemy, GameObject> poolingBulletEnemy;
     ServiceLocator serviceLocator;
     static AdapterServiceLocator instance;
     public static AdapterServiceLocator Singlenton { get { return instance; } private set { } }
@@ -73,6 +75,17 @@ public class AdapterServiceLocator : MonoBehaviour
         poolingEfects = dictionaryPoolingEfects.ToDictionary();
         poolingAudioClip = dictionaryPoolingAudio.ToDictionary();   
         poolingInstance = dictionaryPoolingInstance.ToDictionary();
+        poolingBulletEnemy = dictionaryPoolingBullet.ToDictionary();
+    }
+
+    public GameObject GetBullet(TypeEnemy enemy)
+    {
+        if (poolingBulletEnemy.ContainsKey(enemy))
+            return poolingBulletEnemy[enemy].GetComponent<IBulletPoolingEnemy>().GetBullet();
+        else
+            Debug.Log("no encontro referencia del bullet del enemigo que recibe como parametro");
+
+        return null;
     }
 
     public void PlayAudioDestroy(AudioClip audio, TypeEnemy typeEnemy) 

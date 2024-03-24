@@ -11,6 +11,8 @@ public class EnemySO : ScriptableObject
     public TypeEnemy typeEnemy;
     public float speed;
     public float durationFlash;
+    public float speedRotate;
     public Color colorFlash;
     public AudioClip soundDestroy;
+   
 }

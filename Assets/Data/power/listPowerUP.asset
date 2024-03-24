@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: listPowerUP
   m_EditorClassIdentifier: 
   list:
-  - {fileID: 11400000, guid: 1214efc0f76e566499c1c81861514969, type: 2}
   - {fileID: 11400000, guid: eb3293c5ab13e3548abc93646536719a, type: 2}
   - {fileID: 11400000, guid: 47d102c2757ecf54baf0831c8e5af6f2, type: 2}
